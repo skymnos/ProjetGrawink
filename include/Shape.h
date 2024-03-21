@@ -1,6 +1,7 @@
 #ifndef _SHAPE_H
 #define _SHAPE_H
 #include <iostream>
+#include "Grawink.h"
 
 typedef struct point {
  int x;
@@ -12,10 +13,10 @@ class Shape
     public :
 
         Shape(int id = 0);
-        int getId() const;
+        int GetId() const;
 
         // rotation de l'objet
-         void Rotate(double angle); 
+        void Rotate(double angle); 
 
         // deplacement de l'objet
         void Translate(int x, int y);
@@ -24,14 +25,27 @@ class Shape
         void Color(std::string color);
 
         // redimention de l'objet
-        void Resize(double scale);
+        void Resize(int height, int width);
 
         void Display() const;
+
+        int GetWidth() const;
+
+        int GetHeight() const;
+
+        int GetAngle() const;
+
+        point GetOrigin() const;
+
+        void SetOrigin(int x, int y);
         
     private:
         bool m_selected = false;
         point m_origin;
         int m_id;
+        int m_width, m_height;
+        GrawEditor::ShapeType m_type;
+        double m_angle;
 
 };
 

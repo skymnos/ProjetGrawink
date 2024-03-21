@@ -4,12 +4,19 @@
 
 int main()
 {
-    Liste myList;
+    ListeShape myList;
     Shape myShape;
     Shape myShape2(21);
-    myList.append(myShape);
+    std::cout<<"length : " << myList.GetLength() <<std::endl;
+    myList.AppendFirst(myShape);
     myList.Display();
-    myList.append(myShape2);
+    myList.AppendFirst(myShape2);
+    myList.Display();
+    std::cout<<"length : " << myList.GetLength() <<std::endl;
+    myList.Delete(0);
+    myList.Display();
+    std::cout<<"length : " << myList.GetLength() <<std::endl;
+    myList.AppendFirst(myShape2);
     myList.Display();
     return 0;
 }

@@ -3,26 +3,58 @@
 #include "../include/Shape.h"
 
 
-struct Element {
+struct ElementShape {
     Shape shape ;
-    Element* next; 
-};
+    ElementShape* next; 
+}; 
+struct ElementAction {
+    Shape shape;  //................. a modifier plus tard .......................
+    ElementAction* next; 
+}; 
 
 
-class Liste {
+class ListeShape {
 private:
-    Element* head;
+    ElementShape* head;
+    int length;
 
 public:
 
-    Liste();
-    ~Liste();
+    ListeShape();
+    ~ListeShape();
+
+    void AppendFirst(const Shape& shape);
+
+    void DeleteFirst();
+
+    void Display() const;
+
+    ElementShape* Find(const Shape& shape) const;
+
+    void Append(const Shape& shape, int index);
+
+    void Delete(int id);
+
+    int GetLength();
+    ElementShape* GetHead();
+
+
+};
+
+class ListeAction {
+private:
+    ElementAction* head;
+
+public:
+
+    ListeAction();
+    ~ListeAction();
 
     void append(const Shape& shape);
 
     void Display() const;
 
-    Element* rechercher(const Shape& shape) const;
+    ElementAction* rechercher(const Shape& shape) const;
 
     void inserer(const Shape& shape, int index);
 

@@ -24,9 +24,9 @@ class GrawEditor {
       All       = ~0ULL       // = 111...111 = 0xff...ff = (2^64)-1
     };
 
-    Liste* getlShapes();
-    Liste* getlUndo();
-    Liste* getlRedo();
+    ListeShape* getlShapes();
+    ListeAction* getlUndo();
+    ListeAction* getlRedo();
     GrawEditor();
     static GrawEditor& GetEditor();
 
@@ -70,9 +70,12 @@ class GrawEditor {
     template <typename Shape> Shape *GetNew();
 
   private:
-    Liste *lShapes;
-    Liste *lUndo;
-    Liste *lRedo;
+    ListeShape *m_lShapes;
+    ListeAction *m_lUndo;
+    ListeAction *m_lRedo;
+
+    int canvasHeight;
+    int canvasWidth;
 };
 
 #endif /* _GRAWINK_H_ */
