@@ -4,7 +4,7 @@
 
 
 struct Element {
-    Shape shape;
+    Shape shape ;
     Element* next; 
 };
 
@@ -20,7 +20,7 @@ public:
 
     void append(const Shape& shape);
 
-    //void display() const;
+    void Display() const;
 
     Element* rechercher(const Shape& shape) const;
 

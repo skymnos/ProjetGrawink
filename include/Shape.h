@@ -11,7 +11,9 @@ class Shape
 {
     public :
 
-    
+        Shape(int id = 0);
+        int getId() const;
+
         // rotation de l'objet
          void Rotate(double angle); 
 
@@ -23,12 +25,17 @@ class Shape
 
         // redimention de l'objet
         void Resize(double scale);
+
+        void Display() const;
         
     private:
-        bool selected = false;
-        point origin;
+        bool m_selected = false;
+        point m_origin;
+        int m_id;
 
 };
+
+bool operator==(Shape const& a, Shape const& b);
 
 
 #endif 

@@ -1,4 +1,5 @@
 #include "liste_chainee.h"
+#include "../include/Grawink.h"
 
 // Constructeur par défaut
 Liste::Liste() : head(nullptr) {}
@@ -29,15 +30,15 @@ void Liste::append(const Shape& shape) {
 }
 
 // Méthode pour afficher les éléments de la liste
-/*void Liste::display() const {
+void Liste::Display() const {
     Element* current = head;
     while (current != nullptr) {
         // Supposons que Shape possède une méthode display() pour afficher ses détails
-        current->shape.display();
+        current->shape.Display();
         current = current->next;
     }
 }
-*/
+
 
 // Méthode pour rechercher un élément dans la liste
 Element* Liste::rechercher(const Shape& shape) const {
