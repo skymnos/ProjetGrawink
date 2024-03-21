@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <iostream>
 #include "Shape.h"
+#include "Rectangle.h"
 #include "../externalLibrary/liste_chainee.h"
 
 class GrawEditor {
@@ -24,15 +25,17 @@ class GrawEditor {
       All       = ~0ULL       // = 111...111 = 0xff...ff = (2^64)-1
     };
 
+     GrawEditor();
     ListeShape* getlShapes();
     ListeAction* getlUndo();
     ListeAction* getlRedo();
-    GrawEditor();
+    int GetCountId();
+   
     static GrawEditor& GetEditor();
 
     // Ajoute un nouveau objet au canevas
     //template <typename Shape>  (ne sait pas si necessaire)
-    GrawEditor& Add(Shape shape);
+    GrawEditor& Add(Shape newShape);
 
     // Supprime un objet du canevas
     GrawEditor& Delete(int shapeId);
@@ -67,13 +70,24 @@ class GrawEditor {
     // Crée une nouvelle instance de la classe `Shape` (i.e. Rectangle,
     // Triangle, Stroke, Circle, etc.) et retourne un pointeur vers l'objet nouvellement alloué.
     // Cet objet peut ensuite être transformé, passé en paramètre à `Add` ou à `Delete`.
-    template <typename Shape> Shape *GetNew();
+    
+    template <typename Shape> Shape GrawEditor::*GetNew()
+    {
+      return new Shape();
+    }
+
+    template<>
+    Rectangle GetNew <Rectangle>(int width, int height)
+    {
+      
+    }
+
 
   private:
     ListeShape *m_lShapes;
     ListeAction *m_lUndo;
     ListeAction *m_lRedo;
-
+    int countId;
     int canvasHeight;
     int canvasWidth;
 };

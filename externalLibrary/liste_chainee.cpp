@@ -23,11 +23,6 @@ void ListeShape::AppendFirst(const Shape& shape) {
     } else {
         newElement->next = head;
         head = newElement;
-        /*ElementShape* current = head;
-        while (current->next != nullptr) {
-            current = current->next;
-        }
-        current->next = newElement;*/
     }
 
     length ++;
@@ -43,6 +38,7 @@ void ListeShape::DeleteFirst()
     {
         ElementShape* toDelete = head;
         head = head->next;
+        delete toDelete;
     }
     length --;
 }
@@ -103,13 +99,23 @@ void ListeShape::Delete(int id)
 {
     ElementShape* current = head;
     ElementShape* previous = nullptr;
-    while (current->shape.getId() != id)
+
+    if (current->shape.GetId() == id)
     {
-        previous = current;
-        current = current->next;
+        head = current->next;
+        delete current;
     }
-    ElementShape* toDelete = current;
-    previous->next = current->next;
+    else
+    {
+        while (current->shape.GetId() != id)
+        {
+            previous = current;
+            current = current->next;
+        }
+        ElementShape* toDelete = current;
+        previous->next = current->next;
+        delete toDelete;
+    }
 
     length--;
 }

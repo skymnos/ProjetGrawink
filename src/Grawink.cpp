@@ -5,7 +5,7 @@
 // constructeur par default
 GrawEditor::GrawEditor()
 {
-
+    countId = 0;
 }
 
 ListeShape* GrawEditor::getlShapes()
@@ -20,15 +20,15 @@ ListeAction* GrawEditor::getlRedo()
 {
     return m_lRedo;
 }
-
-GrawEditor& GrawEditor::Add(Shape shape)
+int GrawEditor::GetCountId()
 {
-    m_lShapes->AppendFirst(shape);
+    return countId;
 }
+
 
 GrawEditor& GrawEditor::Delete(int shapeId)
 {
-    
+
 }
 
 GrawEditor& GrawEditor::Resize(int width, int height)
@@ -51,12 +51,19 @@ GrawEditor& GrawEditor::Resize(int width, int height)
         shapeOrigin = current->shape.GetOrigin();
 
         current->shape.Resize(shapeHeight * scaleY, shapeWidth * scaleX);
-        current->shape.SetOrigin(shapeOrigin.x * scaleX, shapeOrigin.y * scaleY);
+        current->shape.Translate(shapeOrigin.x * scaleX, shapeOrigin.y * scaleY);
 
         current = current->next;
 
         
     }
+}
+
+
+GrawEditor& GrawEditor::Add(Shape newShape)
+{
+    m_lShapes->AppendFirst(newShape);
+    countId++;
 }
 
 

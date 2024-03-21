@@ -1,12 +1,12 @@
 #include "../include/Shape.h"
+#include "../include/Grawink.h"
 
 using namespace std;
 
-Shape::Shape(int id) : m_id(id)
+Shape::Shape(const point& origin, int width, int height, int angle, std::string color) : m_origin(origin),m_width(width),m_height(height),m_angle(angle),m_color(color)
 {
-
+    m_id = GrawEditor::GetEditor().GetCountId();
 }
-
 int Shape::GetId() const
 {
     return m_id;
@@ -30,12 +30,6 @@ point Shape::GetOrigin() const
     return m_origin;
 }
 
-void Shape::SetOrigin(int x, int y)
-{
-    m_origin.x = x;
-    m_origin.y = y;
-}
-
 bool operator==(Shape const& a, Shape const& b)
 {
     return  a.GetId()== b.GetId();
@@ -53,6 +47,18 @@ void Shape::Rotate(double angle)
 
 void Shape::Translate(int x , int y)
 {
-    
+    m_origin.x = x;
+    m_origin.y = y;
+}
+
+void Shape::Resize(int width,int height)
+{
+    m_width = width;
+    m_height = height;
+}
+
+void Shape::Color(std::string color)
+{
+    m_color = color;
 }
 
