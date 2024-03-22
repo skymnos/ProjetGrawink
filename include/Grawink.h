@@ -71,15 +71,9 @@ class GrawEditor {
     // Triangle, Stroke, Circle, etc.) et retourne un pointeur vers l'objet nouvellement alloué.
     // Cet objet peut ensuite être transformé, passé en paramètre à `Add` ou à `Delete`.
     
-    template <typename Shape> Shape GrawEditor::*GetNew()
+    template <typename Shape> Shape *GetNew()
     {
       return new Shape();
-    }
-
-    template<>
-    Rectangle GetNew <Rectangle>(int width, int height)
-    {
-      
     }
 
 

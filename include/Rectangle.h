@@ -4,7 +4,8 @@
 
 class Rectangle : public Shape
 {
-     
+    public:
+    Rectangle(); 
 };
 
 

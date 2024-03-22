@@ -10,7 +10,7 @@ int main()
     std::cout<<"length : " << myList.GetLength() <<std::endl;
     myList.AppendFirst(myShape);
     myList.Display();
-    myList.Delete(10);
+    myList.Delete(0);
     myList.Display();
     myList.AppendFirst(myShape2);
     myList.Display();

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Shape::Shape(const point& origin, int width, int height, int angle, std::string color) : m_origin(origin),m_width(width),m_height(height),m_angle(angle),m_color(color)
+Shape::Shape(point origin, int width, int height, int angle, std::string stroke_color, std::string fill_color, int stroke_width) : m_origin(origin),m_width(width),m_height(height),m_angle(angle),m_stroke_color(stroke_color),m_fill_color(fill_color),m_stroke_width(stroke_width)
 {
     m_id = GrawEditor::GetEditor().GetCountId();
 }
@@ -57,8 +57,9 @@ void Shape::Resize(int width,int height)
     m_height = height;
 }
 
-void Shape::Color(std::string color)
+void Shape::Color(std::string stroke_color, std::string fill_color = "none")
 {
-    m_color = color;
+    m_stroke_color = stroke_color;
+    m_fill_color = fill_color;
 }
 
