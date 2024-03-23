@@ -1,6 +1,7 @@
 #include <iostream>
 #include "../externalLibrary/liste_chainee.h"
 #include "../include/Grawink.h"
+#include <fstream>
 
 // constructeur par default
 GrawEditor::GrawEditor()
@@ -66,4 +67,24 @@ GrawEditor& GrawEditor::Add(Shape newShape)
     countId++;
 }
 
+GrawEditor& GrawEditor::ExportSVG(std::string fileName)
+{
+    std::ofstream MyFile(fileName);
+
+    std::string header = "<svg width = \"" + std::to_string(100) + "\" height = \"" + std::to_string(100) + "\" version = \"1.1\" xmlns = \"http://www.w3.org/2000/svg\">\n";
+    
+    // Write to the file
+    MyFile << header;
+
+    ElementShape* current = m_lShapes->GetHead();
+    //MyFile << current->shape //appeler la fonction de chaque forme qui ressort le format svg (à créer pour chaque shape)
+    for (int i = 1; i < m_lShapes->GetLength(); i++) 
+    {
+        current = current->next
+        //MyFile << current->shape //appeler la fonction de chaque forme qui ressort le format svg (à créer pour chaque shape)
+    }
+    MyFile << "</svg>";
+    // Close the file
+    MyFile.close();
+}
 

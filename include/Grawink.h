@@ -65,7 +65,7 @@ class GrawEditor {
     GrawEditor& Print();
 
     // Écrit le code SVG résultant des objets contenus dans le canevas
-    GrawEditor& ExportSVG();
+    GrawEditor& ExportSVG(std::string fileName);
 
     // Crée une nouvelle instance de la classe `Shape` (i.e. Rectangle,
     // Triangle, Stroke, Circle, etc.) et retourne un pointeur vers l'objet nouvellement alloué.
