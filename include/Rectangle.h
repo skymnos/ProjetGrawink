@@ -8,10 +8,13 @@ class Rectangle : public Shape
         Rectangle(point origin = {0,0}, int m_width = 10, int m_height = 10, int angle = 0, std::string stroke_color = "black", int stroke_width = 3, std::string fill_color = "black");
 
         virtual std::string ConvertSVG() const;
+
+        void Resize(int width, int height);
+
+        void Display() const;
     
     private:
         int m_width, m_height;
 };
-
 
 #endif

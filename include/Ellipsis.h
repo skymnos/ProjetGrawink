@@ -9,6 +9,11 @@ class Ellipsis : public Shape
 
         std::string ConvertSVG() const;
 
+        void Resize(int r1, int r2);
+
+        void Display() const;
+    
+
     private:
         double m_r1,m_r2;
 };

@@ -28,7 +28,12 @@ bool operator==(Shape const& a, Shape const& b)
 
 void Shape::Display() const
 {
-    cout<<"id : "<< m_id << endl;
+    cout<<"point x : "<<m_origin.x<<endl;
+    cout<<"point y : "<<m_origin.x<<endl;
+    cout<<"angle : "<<m_angle<<endl;
+    cout<<"stroke color : "<<m_stroke_color<<endl;
+    cout<<"stroke width : "<<m_stroke_width<<endl;
+    cout<<"fill color : "<<m_fill_color<<endl;
 }
 
 void Shape::Rotate(double angle) 
@@ -44,6 +49,7 @@ void Shape::Translate(int x , int y)
 
 void Shape::Resize()
 {
+    
 }
 
 void Shape::Color(std::string stroke_color, std::string fill_color = "none")

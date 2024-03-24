@@ -9,3 +9,17 @@ std::string Rectangle::ConvertSVG() const
 {
 	return "<rect x=\""+ std::to_string(m_origin.x) +"\" y=\""+ std::to_string(m_origin.y) +"\" width=\""+ std::to_string(m_width) +"\" height=\""+ std::to_string(m_height) +"\" stroke=\""+ m_stroke_color +"\" fill=\""+ m_fill_color +"\" stroke-width=\""+ std::to_string(m_stroke_width) +"\"/>\n";
 }
+
+void Rectangle::Resize(int width, int height)
+{
+	m_width = width;
+	m_height = height;
+}
+
+void Rectangle::Display() const
+{
+	std::cout<<"width : "<<m_width<<std::endl;
+	std::cout<<"height : "<<m_height<<std::endl;
+	Shape::Display();
+
+}

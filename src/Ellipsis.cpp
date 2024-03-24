@@ -9,3 +9,17 @@ std::string Ellipsis::ConvertSVG() const
 {
 	return "<ellipse cx=\""+ std::to_string(m_origin.x) + "\" cy=\""+ std::to_string(m_origin.y) +"\" rx=\""+ std::to_string(m_r1) +"\" ry=\""+ std::to_string(m_r2) +"\" stroke=\""+ m_stroke_color +"\" fill=\""+ m_fill_color +"\" stroke-width=\""+ std::to_string(m_stroke_width) +"\"/>\n";
 }
+
+void Ellipsis::Resize(int r1, int r2)
+{
+	m_r1 = r1;
+	m_r2 = r2;
+}
+
+void Ellipsis::Display() const
+{
+	std::cout<<"rayon 1 : "<<m_r1<<std::endl;
+	std::cout<<"rayon 2 : "<<m_r2<<std::endl;
+	Shape::Display();
+
+}
