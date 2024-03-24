@@ -10,7 +10,7 @@ int main()
     Shape *rectangle, *stroke, *polygone;
     Polygone *poly1;
     rectangle = new Rectangle({20,20}, 50, 20, 0, "black", 1, "red");
-    stroke = new Stroke({0,0},{100,200},0, "blue", 5);
+    stroke = new Stroke({0,0},{100,300},0, "green", 3);
     polygone = new Polygone({0,0}, {{30, 30}, {0, 30}, {30,0}});
     poly1 = new Polygone({100,300}, {{80,300}, {80, 250}, {100,250}});
     GrawEditor::m_GrawEditor.Resize(500, 500);

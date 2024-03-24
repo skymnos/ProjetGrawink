@@ -4,45 +4,154 @@
 
 class Shape;
 
-struct ElementShape {
-    Shape* shape ;
-    ElementShape* next; 
+template <typename T>
+struct Element {
+    T* data ;
+    Element* next; 
 }; 
-struct ElementAction {
+/*struct ElementAction {
     Shape* shape;  //................. a modifier plus tard .......................
     ElementAction* next; 
-}; 
+}; */
 
 
-class ListeShape {
+template <typename T>
+class List {
 private:
-    ElementShape* head;
+    Element<T>* head;
     int length;
 
 public:
 
-    ListeShape();
-    ~ListeShape();
+    List(): head(nullptr), length(0) {};
+    ~List()
+    {
+        Element<T>* current = head;
+        while (current != nullptr) {
+            Element<T>* next = current->next;
+            delete current;
+            current = next;
+        }
+    };
 
-    void AppendFirst( Shape *shape);
+    void AppendFirst( T *t)
+    {
+        Element<T>* newElement = new Element<T>{t, nullptr};
 
-    void DeleteFirst();
+        if (head == nullptr) {
+            head = newElement;
+        } else {
+            newElement->next = head;
+            head = newElement;
+        }
 
-    void Display() const;
+        length ++;
+    };
 
-    ElementShape* Find( Shape *shape) const;
+    void DeleteFirst()
+    {
+        if (head == nullptr)
+        {
+            exit(EXIT_FAILURE);
+        }
+        else
+        {
+            Element<T>* toDelete = head;
+            head = head->next;
+            delete toDelete;
+        }
+        length --;
+    };
 
-    void Append( Shape *shape, int index);
+    void Display() const
+    {
+        Element<T>* current = head;
+        while (current != nullptr) {
+            // Supposons que Shape possède une méthode display() pour afficher ses détails
+            current->data->Display();
+            current = current->next;
+        }
+    };
 
-    void Delete(int id);
+    Element<T>* Find( T *t) const
+    {
+        Element<T>* current = head;
+        while (current != nullptr) {
+            if (current->data == t) {
+                return current;
+            }
+            current = current->next;
+        }
+        return nullptr; // Si l'élément n'est pas trouvé
+    };
 
-    int GetLength();
-    ElementShape* GetHead();
+    void Append( T *t, int index)
+    {
+        if (index < 0) {
+            std::cerr << "Index invalide." << std::endl;
+            return;
+        }
+
+        Element<T>* newElement = new Element<T>{t, nullptr};
+        if (index == 0) {
+            newElement->next = head;
+            head = newElement;
+            return;
+        }
+
+        Element<T>* current = head;
+        int currentIndex = 0;
+        while (current != nullptr && currentIndex < index - 1) {
+            current = current->next;
+            ++currentIndex;
+        }
+        if (current == nullptr) {
+            std::cerr << "Index hors limites." << std::endl;
+            return;
+        }
+        newElement->next = current->next;
+        current->next = newElement;
+        length ++;
+    };
+
+    void Delete(int id)
+    {
+        Element<T>* current = head;
+        Element<T>* previous = nullptr;
+
+        if (current->data->GetId() == id)
+        {
+            head = current->next;
+            delete current;
+        }
+        else
+        {
+            while (current->data->GetId() != id)
+            {
+                previous = current;
+                current = current->next;
+            }
+            Element<T>* toDelete = current;
+            previous->next = current->next;
+            delete toDelete;
+        }
+
+        length--;
+    };
+
+    int GetLength()
+    {
+        return length;
+    };
+    Element<T>* GetHead()
+    {
+        return head;
+    };
 
 
 };
 
-class ListeAction {
+/*class ListeAction {
 private:
     ElementAction* head;
 
@@ -59,6 +168,6 @@ public:
 
     void inserer( Shape *shape, int index);
 
-};
+};*/
 
 #endif

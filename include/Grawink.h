@@ -30,9 +30,9 @@ class GrawEditor {
     };
 
     GrawEditor();
-    ListeShape getlShapes();
-    ListeAction getlUndo();
-    ListeAction getlRedo();
+    List<Shape> getlShapes();
+    List<Shape> getlUndo();
+    List<Shape> getlRedo();
     int GetCountId();
    
     static GrawEditor& GetEditor();
