@@ -9,10 +9,6 @@ class Polygone : public Shape
 
         std::string ConvertSVG() const;
 
-        virtual Polygone* Resize(std::vector<point> vectorPoint);
-
-        Polygone* ResizeScale(double scale);
-
         virtual Polygone* Display();
 
     private:

@@ -7,10 +7,11 @@
 
 int main()
 {
+    Shape *rectangle, *poly1;
     Stroke *stroke;
     Polygone *polygone;
-    Polygone *poly1;
-    Rectangle *rectangle;
+    //Polygone *poly1;
+    //Rectangle *rectangle;
     GrawEditor::m_GrawEditor.Resize(2000, 2000);
     rectangle = new Rectangle({20,20}, 50, 20, 0, "black", 1, "red");
     stroke = new Stroke({0,0},{100,300},0, "green", 3);
@@ -27,8 +28,8 @@ int main()
 
     std::cout<<"_______________________________"<<std::endl;
     //poly1->Resize({{120,140},{130,160},{10, 250}});
-    poly1->ResizeScale(1.2);
-    rectangle->ResizeScale(2,2);
+    poly1->Scale(0.5);
+    rectangle->Scale(2);
     std::cout<<"_______________________________"<<std::endl;
     std::cout<<polygone->ConvertSVG()<<std::endl;
     GrawEditor::m_GrawEditor.ExportSVG();

@@ -5,7 +5,8 @@ using namespace std;
 
 Shape::Shape(point origin, int angle, std::string stroke_color, int stroke_width, std::string fill_color) : m_origin(origin),m_angle(angle),m_stroke_color(stroke_color),m_stroke_width(stroke_width),m_fill_color(fill_color)
 {
-    m_id = GrawEditor::GetEditor().GetCountId();
+    m_translate = {0,0};
+    m_scale = 1;
 }
 int Shape::GetId() const
 {
@@ -45,10 +46,16 @@ Shape* Shape::Rotate(double angle)
     return this;
 }
 
-Shape* Shape::Translate(int x , int y)
+Shape* Shape::Translate(point translate)
 {
-    m_origin.x = x;
-    m_origin.y = y;
+    m_translate = translate;
+
+    return this;
+}
+
+Shape* Shape::Scale(double scale)
+{
+    m_scale = scale;
 
     return this;
 }

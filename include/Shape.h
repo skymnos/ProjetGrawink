@@ -21,7 +21,9 @@ class Shape
         Shape* Rotate(double angle); 
 
         // deplacement de l'objet
-        Shape* Translate(int x, int y);
+        Shape* Translate(point translate);
+
+        Shape* Scale(double scale);
 
         // change la couleur de l'objet
         Shape* Color(std::string stroke_color, std::string fill_color);
@@ -45,6 +47,8 @@ class Shape
         //int m_width, m_height;
         //GrawEditor::ShapeType m_type;
         double m_angle;
+        double m_scale;
+        point m_translate;
         int m_stroke_width;
 
 };

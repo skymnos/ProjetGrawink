@@ -7,23 +7,7 @@ Ellipsis::Ellipsis(point origin, double r1, double r2, int angle, std::string st
 
 std::string Ellipsis::ConvertSVG() const
 {
-	return "<ellipse cx=\""+ std::to_string(m_origin.x) + "\" cy=\""+ std::to_string(m_origin.y) +"\" rx=\""+ std::to_string(m_r1) +"\" ry=\""+ std::to_string(m_r2) +"\" stroke=\""+ m_stroke_color +"\" fill=\""+ m_fill_color +"\" stroke-width=\""+ std::to_string(m_stroke_width) +"\" transform = \"rotate("+ std::to_string(m_angle) +")/>\n";
-}
-
-Ellipsis* Ellipsis::Resize(int r1, int r2)
-{
-	m_r1 = r1;
-	m_r2 = r2;
-
-	return this;
-}
-
-Ellipsis* Ellipsis::ResizeScale(double scale_r1, double scale_r2)
-{
-	m_r1 *= scale_r1;
-	m_r2 *= scale_r2; 
-
-	return this;
+	return "<ellipse cx=\""+ std::to_string(m_origin.x) + "\" cy=\""+ std::to_string(m_origin.y) +"\" rx=\""+ std::to_string(m_r1) +"\" ry=\""+ std::to_string(m_r2) +"\" stroke=\""+ m_stroke_color +"\" fill=\""+ m_fill_color +"\" stroke-width=\""+ std::to_string(m_stroke_width) +"\" transform = \"rotate("+ std::to_string(m_angle) +") translate("+ std::to_string(m_translate.x) + ","+  std::to_string(m_translate.y) + ") scale("+ std::to_string(m_scale) +") \"/>\n";
 }
 
 

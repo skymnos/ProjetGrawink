@@ -9,10 +9,6 @@ class Ellipsis : public Shape
 
         std::string ConvertSVG() const;
 
-        virtual Ellipsis* Resize(int r1, int r2);
-
-        Ellipsis* ResizeScale(double scale_r1, double scale_r2);
-
         virtual Ellipsis* Display();
     
 

@@ -9,10 +9,6 @@ class Stroke : public Shape
 
         std::string ConvertSVG() const;
 
-        virtual Stroke* Resize(point endP);
-
-        Stroke* ResizeScale(double scale_x, double scale_y);
-
         virtual Stroke* Display();
 
 

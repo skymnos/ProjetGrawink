@@ -9,10 +9,6 @@ class Rectangle : public Shape
 
         virtual std::string ConvertSVG() const;
 
-        virtual Rectangle* Resize(int width, int height);
-
-        Rectangle* ResizeScale(double scale_width, double scale_height);
-
         virtual Rectangle* Display();
     
     private:

@@ -7,22 +7,7 @@ Stroke::Stroke(point origin, point endP, int angle, std::string stroke_color, in
 
 std::string Stroke::ConvertSVG() const
 {
-	return "<line x1=\""+ std::to_string(m_origin.x) + "\" x2=\""+ std::to_string(m_endP.x) +"\" y1=\""+ std::to_string(m_origin.y) +"\" y2=\""+ std::to_string(m_endP.y) +"\" stroke=\""+ m_stroke_color +"\" stroke-width=\""+ std::to_string(m_stroke_width) +"\" transform = \"rotate("+ std::to_string(m_angle) +")\"/>\n";
-}
-
-Stroke* Stroke::Resize(point endP)
-{
-	m_endP = endP;
-
-	return this;
-}
-
-Stroke* Stroke::ResizeScale(double scale_x, double scale_y)
-{
-	m_endP.x *= scale_x;
-	m_endP.y *= scale_y; 
-
-	return this;
+	return "<line x1=\""+ std::to_string(m_origin.x) + "\" x2=\""+ std::to_string(m_endP.x) +"\" y1=\""+ std::to_string(m_origin.y) +"\" y2=\""+ std::to_string(m_endP.y) +"\" stroke=\""+ m_stroke_color +"\" stroke-width=\""+ std::to_string(m_stroke_width) +"\" transform = \"rotate("+ std::to_string(m_angle)  +") translate("+ std::to_string(m_translate.x) + ","+  std::to_string(m_translate.y) + ") scale("+ std::to_string(m_scale) +") \"/>\n";
 }
 
 
