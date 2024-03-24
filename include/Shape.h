@@ -27,9 +27,8 @@ class Shape
         void Color(std::string stroke_color, std::string fill_color);
 
         // redimention de l'objet
-        void Resize();
 
-        void Display() const;
+        virtual void Display() const;
 
         int GetAngle() const;
 

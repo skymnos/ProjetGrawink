@@ -16,6 +16,12 @@ void Rectangle::Resize(int width, int height)
 	m_height = height;
 }
 
+void Rectangle::ResizeScale(double scale_width, double scale_height)
+{
+	m_width *= scale_width;
+	m_height *= scale_height; 
+}
+
 void Rectangle::Display() const
 {
 	std::cout<<"width : "<<m_width<<std::endl;

@@ -10,11 +10,17 @@ std::string Stroke::ConvertSVG() const
 	return "<line x1=\""+ std::to_string(m_origin.x) + "\" x2=\""+ std::to_string(m_endP.x) +"\" y1=\""+ std::to_string(m_origin.y) +"\" y2=\""+ std::to_string(m_endP.y) +"\" stroke=\""+ m_stroke_color +"\" stroke-width=\""+ std::to_string(m_stroke_width) +"\"/>\n";
 }
 
-void Stroke::Resize(point origin ,point endP)
+void Stroke::Resize(point endP)
 {
-	m_origin = origin;
 	m_endP = endP;
 }
+
+void Stroke::ResizeScale(double scale_x, double scale_y)
+{
+	m_endP.x *= scale_x;
+	m_endP.y *= scale_y; 
+}
+
 
 void Stroke::Display() const
 {

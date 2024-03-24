@@ -47,11 +47,6 @@ void Shape::Translate(int x , int y)
     m_origin.y = y;
 }
 
-void Shape::Resize()
-{
-    
-}
-
 void Shape::Color(std::string stroke_color, std::string fill_color = "none")
 {
     m_stroke_color = stroke_color;

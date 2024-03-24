@@ -16,6 +16,13 @@ void Ellipsis::Resize(int r1, int r2)
 	m_r2 = r2;
 }
 
+void Ellipsis::ResizeScale(double scale_r1, double scale_r2)
+{
+	m_r1 *= scale_r1;
+	m_r2 *= scale_r2; 
+}
+
+
 void Ellipsis::Display() const
 {
 	std::cout<<"rayon 1 : "<<m_r1<<std::endl;

@@ -1,6 +1,6 @@
-<svg width = "500" height = "500" version = "1.1" xmlns = "http://www.w3.org/2000/svg">
-<polygon points="100,300 120, 140 130, 160 10, 250 " stroke = "black" fill = "black" stroke-width = "2"/>
+<svg width = "2000" height = "2000" version = "1.1" xmlns = "http://www.w3.org/2000/svg">
+<polygon points="1000,1000 760, 520 640, 400 1360, 340 " stroke = "black" fill = "black" stroke-width = "2"/>
 <polygon points="0,0 30, 30 0, 30 30, 0 " stroke = "black" fill = "black" stroke-width = "2"/>
 <line x1="0" x2="100" y1="0" y2="300" stroke="green" stroke-width="3"/>
-<rect x="20" y="20" width="50" height="20" stroke="black" fill="red" stroke-width="1"/>
+<rect x="20" y="20" width="100" height="40" stroke="black" fill="red" stroke-width="1"/>
 </svg>

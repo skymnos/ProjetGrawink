@@ -9,9 +9,11 @@ class Rectangle : public Shape
 
         virtual std::string ConvertSVG() const;
 
-        void Resize(int width, int height);
+        virtual void Resize(int width, int height);
 
-        void Display() const;
+        void ResizeScale(double scale_width, double scale_height);
+
+        virtual void Display() const;
     
     private:
         int m_width, m_height;

@@ -11,6 +11,8 @@ class Polygone : public Shape
 
         virtual void Resize(std::vector<point> vectorPoint);
 
+        void ResizeScale(double scale);
+
         virtual void Display() const;
 
     private:

@@ -1,4 +1,5 @@
 #include "../include/Polygone.h"
+#include <cmath>
 
 Polygone::Polygone(point origin, std::vector<point> vectorPoint, int angle, std::string stroke_color, int stroke_width, std::string fill_color) : Shape(origin, angle, stroke_color, stroke_width, fill_color), m_vectorPoint(vectorPoint)
 {
@@ -32,11 +33,20 @@ void Polygone::Resize(std::vector<point> vectorPoint)
 			m_vectorPoint[i] = vectorPoint[i];
 		}
 	}
-	
-	
-	
-	
 }
+
+void Polygone::ResizeScale(double scale)
+{
+	for (int i = 0; i < m_vectorPoint.size(); i++)
+	{
+		double vectX = m_vectorPoint[i].x - m_origin.x;
+		double vectY = m_vectorPoint[i].y - m_origin.y;
+		m_vectorPoint[i].x = vectX * scale + m_origin.x;
+		m_vectorPoint[i].y = vectY * scale + m_origin.y;
+	}
+
+}
+
 
 void Polygone::Display() const
 {
