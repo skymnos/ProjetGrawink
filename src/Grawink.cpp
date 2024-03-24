@@ -53,7 +53,7 @@ GrawEditor& GrawEditor::Resize(int width, int height)
     scaleY = height/canvasHeight;
     canvasHeight = height;
     canvasWidth = width;
-    ElementShape *current = m_lShapes.GetHead();
+    /*ElementShape *current = m_lShapes->GetHead();
 
     if (current == nullptr)
     {
@@ -65,26 +65,26 @@ GrawEditor& GrawEditor::Resize(int width, int height)
         int shapeWidth;
         point shapeOrigin;
 
-        for (int i =0; i < m_lShapes.GetLength(); i++)
+        for (int i =0; i < m_lShapes->GetLength(); i++)
         {
             // reflechir à comment faire selon le shapeType
-            /*shapeHeight = current->shape.GetHeight();
+            shapeHeight = current->shape.GetHeight();
             shapeWidth = current->shape.GetWidth();
             shapeOrigin = current->shape.GetOrigin();
 
             current->shape.Resize(shapeHeight * scaleY, shapeWidth * scaleX);
             current->shape.Translate(shapeOrigin.x * scaleX, shapeOrigin.y * scaleY);
-            */
+            
 
             current = current->next;
         }
     }
-
+*/
     return m_GrawEditor;
 }
 
 
-GrawEditor& GrawEditor::Add(Shape& newShape)
+GrawEditor& GrawEditor::Add(Shape *newShape)
 {
     m_lShapes.AppendFirst(newShape);
     countId++;
@@ -112,14 +112,14 @@ GrawEditor& GrawEditor::ExportSVG()
     }
     else
     {
-        std::cout<<"Check" <<std::endl;
-        MyFile << current->shape.ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
-        std::cout << "convert" << std::endl;
-        for (int i = 1; i < m_lShapes.GetLength(); i++) 
+        MyFile << current->shape->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
+
+        while (current->next != nullptr)
         {
             current = current->next;
-            MyFile << current->shape.ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
+            MyFile << current->shape->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
         }
+        
     }
 
     MyFile << "</svg>";

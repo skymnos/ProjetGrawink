@@ -5,11 +5,11 @@
 class Shape;
 
 struct ElementShape {
-    Shape& shape ;
+    Shape* shape ;
     ElementShape* next; 
 }; 
 struct ElementAction {
-    Shape& shape;  //................. a modifier plus tard .......................
+    Shape* shape;  //................. a modifier plus tard .......................
     ElementAction* next; 
 }; 
 
@@ -24,15 +24,15 @@ public:
     ListeShape();
     ~ListeShape();
 
-    void AppendFirst( Shape& shape);
+    void AppendFirst( Shape *shape);
 
     void DeleteFirst();
 
     void Display() const;
 
-    ElementShape* Find( Shape& shape) const;
+    ElementShape* Find( Shape *shape) const;
 
-    void Append( Shape& shape, int index);
+    void Append( Shape *shape, int index);
 
     void Delete(int id);
 
@@ -51,13 +51,13 @@ public:
     ListeAction();
     ~ListeAction();
 
-    void append( Shape& shape);
+    void append( Shape *shape);
 
     void Display() const;
 
-    ElementAction* rechercher( Shape& shape) const;
+    ElementAction* rechercher( Shape *shape) const;
 
-    void inserer( Shape& shape, int index);
+    void inserer( Shape *shape, int index);
 
 };
 

@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Shape.h"
 #include "liste_chainee.h"
+#include <vector>
 
 class Shape;
 class ListeShape;
@@ -38,7 +39,7 @@ class GrawEditor {
 
     // Ajoute un nouveau objet au canevas
     //template <typename Shape>  (ne sait pas si necessaire)
-    GrawEditor& Add(Shape& newShape);
+    GrawEditor& Add(Shape *newShape);
 
     // Supprime un objet du canevas
     GrawEditor& Delete(int shapeId);
@@ -83,9 +84,7 @@ class GrawEditor {
 
 
   private:
-    //ListeShape& m_lShapes;
-    //ListeAction& m_lUndo;
-    //ListeAction& m_lRedo;
+
     int countId;
     int canvasHeight;
     int canvasWidth;

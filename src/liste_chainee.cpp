@@ -14,7 +14,7 @@ ListeShape::~ListeShape() {
 }
 
 // Méthode pour ajouter un élément à la fin de la liste
-void ListeShape::AppendFirst( Shape& shape) {
+void ListeShape::AppendFirst( Shape *shape) {
     ElementShape* newElement = new ElementShape{shape, nullptr};
 
     if (head == nullptr) {
@@ -47,14 +47,14 @@ void ListeShape::Display() const {
     ElementShape* current = head;
     while (current != nullptr) {
         // Supposons que Shape possède une méthode display() pour afficher ses détails
-        current->shape.Display();
+        current->shape->Display();
         current = current->next;
     }
 }
 
 
 // Méthode pour rechercher un élément dans la liste
-ElementShape* ListeShape::Find( Shape& shape) const {
+ElementShape* ListeShape::Find( Shape *shape) const {
     ElementShape* current = head;
     while (current != nullptr) {
         if (current->shape == shape) {
@@ -66,7 +66,7 @@ ElementShape* ListeShape::Find( Shape& shape) const {
 }
 
 // Méthode pour insérer un élément à un emplacement spécifique de la liste
-void ListeShape::Append( Shape& shape, int index) {
+void ListeShape::Append( Shape *shape, int index) {
     if (index < 0) {
         std::cerr << "Index invalide." << std::endl;
         return;
@@ -99,14 +99,14 @@ void ListeShape::Delete(int id)
     ElementShape* current = head;
     ElementShape* previous = nullptr;
 
-    if (current->shape.GetId() == id)
+    if (current->shape->GetId() == id)
     {
         head = current->next;
         delete current;
     }
     else
     {
-        while (current->shape.GetId() != id)
+        while (current->shape->GetId() != id)
         {
             previous = current;
             current = current->next;
@@ -144,7 +144,7 @@ ListeAction::~ListeAction() {
 }
 
 // Méthode pour ajouter un élément à la fin de la liste
-void ListeAction::append( Shape& shape) {
+void ListeAction::append( Shape *shape) {
     ElementAction* newElement = new ElementAction{shape, nullptr};
 
     if (head == nullptr) {
@@ -163,14 +163,14 @@ void ListeAction::Display() const {
     ElementAction* current = head;
     while (current != nullptr) {
         // Supposons que Shape possède une méthode display() pour afficher ses détails
-        current->shape.Display();
+        current->shape->Display();
         current = current->next;
     }
 }
 
 
 // Méthode pour rechercher un élément dans la liste
-ElementAction* ListeAction::rechercher( Shape& shape) const {
+ElementAction* ListeAction::rechercher( Shape *shape) const {
     ElementAction* current = head;
     while (current != nullptr) {
         if (current->shape == shape) {
@@ -182,7 +182,7 @@ ElementAction* ListeAction::rechercher( Shape& shape) const {
 }
 
 // Méthode pour insérer un élément à un emplacement spécifique de la liste
-void ListeAction::inserer( Shape& shape, int index) {
+void ListeAction::inserer( Shape *shape, int index) {
     if (index < 0) {
         std::cerr << "Index invalide." << std::endl;
         return;
