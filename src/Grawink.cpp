@@ -106,47 +106,21 @@ GrawEditor& GrawEditor::ExportSVG()
 
     ElementShape* current = m_lShapes.GetHead(); // cause une erreure de segmentation
 
-    /*for (int i = 1; i < 20; i++) 
-    {
-        std::cout << "enter for loop : " << i << std::endl;
-        std::cout << current->shape.ConvertSVG() << std::endl; //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
-        std::cout << "loop finished: " << i  << std::endl;
-    }*/
-
     if (current == nullptr)
     {
         std::cout<<"No shape in the list" <<std::endl;
     }
     else
     {
-        std::cout<<"Check" <<std::endl;
         MyFile << current->shape->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
-        std::cout << "convert" << std::endl;
-        /*for (int i = 1; i < m_lShapes.GetLength(); i++) 
-        {
-            std::cout << "enter for loop" << std::endl;
-            current = current->next;
-            std::cout << "get current next" << std::endl;
-            MyFile << current->shape.ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
-            std::cout << "loop finished" << std::endl;
-        }*/
 
         while (current->next != nullptr)
         {
-            std::cout << "enter for loop" << std::endl;
             current = current->next;
-            std::cout << "get current next" << std::endl;
             MyFile << current->shape->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
-            std::cout << "loop finished" << std::endl;
         }
         
     }
-
-    /*for (int i = 0; i < m_lShapes.size(); i++)
-    {
-        std::cout << m_lShapes[i]->ConvertSVG() << std::endl;
-        MyFile << m_lShapes[i]->ConvertSVG();
-    }*/
 
     MyFile << "</svg>";
     // Close the file

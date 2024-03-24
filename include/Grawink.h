@@ -84,12 +84,6 @@ class GrawEditor {
 
 
   private:
-    //ListeShape m_lShapes;
-    //ListeAction m_lUndo;
-    //ListeAction m_lRedo;
-    //std::vector<Shape*> m_lShapes;
-    //std::vector<Shape*> m_lUndo;
-    //std::vector<Shape*> m_lRedo;
 
     int countId;
     int canvasHeight;
