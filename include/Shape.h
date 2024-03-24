@@ -14,7 +14,7 @@ class Shape
 {
     public :
 
-        Shape(point m_origin = {0,0}, int m_angle = 0, std::string m_stroke_color = "black", int m_stroke_width = 4, std::string m_fill_color = "black");
+        Shape(point m_origin = {0,0}, int m_angle = 0, std::string m_stroke_color = "black", int m_stroke_width = 4, std::string m_fill_color = "black", double fill_opacity = 1);
         int GetId() const;
 
         // rotation de l'objet
@@ -26,7 +26,7 @@ class Shape
         Shape* Scale(double scale);
 
         // change la couleur de l'objet
-        Shape* Color(std::string stroke_color, std::string fill_color);
+        Shape* Color(std::string stroke_color, std::string fill_color, double fill_opacity);
 
         // redimention de l'objet
 
@@ -50,6 +50,7 @@ class Shape
         double m_scale;
         point m_translate;
         int m_stroke_width;
+        double m_fill_opacity;
 
 };
 

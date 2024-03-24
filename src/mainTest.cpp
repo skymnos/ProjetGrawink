@@ -14,7 +14,7 @@ int main()
     //Polygone *poly1;
     //Rectangle *rectangle;
     GrawEditor::m_GrawEditor.Resize(2000, 2000);
-    rectangle = new Rectangle({20,20}, 50, 20, 0, "black", 1, "red");
+    rectangle = new Rectangle({20,20}, 50, 20, 0, "black", 1, "red", 0.5);
     stroke = new Stroke({0,0},{100,300},0, "green", 3);
     polygone = new Polygone({0,0}, {{30, 30}, {0, 30}, {30,0}});
     poly1 = new Polygone({1000,1000}, {{800,600}, {700, 500}, {1300,450}});
