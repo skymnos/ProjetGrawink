@@ -14,10 +14,10 @@ std::string Polygone::ConvertSVG() const
 		points += std::to_string(m_vectorPoint[i].x) + ", " + std::to_string(m_vectorPoint[i].y) + " ";
 	}
 
-	return "<polygon points=\""+ points +"\" stroke = \""+ m_stroke_color +"\" fill = \""+ m_fill_color +"\" stroke-width = \""+ std::to_string(m_stroke_width) +"\"/>\n";
+	return "<polygon points=\""+ points +"\" stroke = \""+ m_stroke_color +"\" fill = \""+ m_fill_color +"\" stroke-width = \""+ std::to_string(m_stroke_width) +"\" transform = \"rotate("+ std::to_string(m_angle) +")\" />\n";
 }
 
-void Polygone::Resize(std::vector<point> vectorPoint)
+Polygone* Polygone::Resize(std::vector<point> vectorPoint)
 {
 	if (vectorPoint.size() <= m_vectorPoint.size())
 	{
@@ -33,9 +33,11 @@ void Polygone::Resize(std::vector<point> vectorPoint)
 			m_vectorPoint[i] = vectorPoint[i];
 		}
 	}
+	
+	return this;
 }
 
-void Polygone::ResizeScale(double scale)
+Polygone* Polygone::ResizeScale(double scale)
 {
 	for (int i = 0; i < m_vectorPoint.size(); i++)
 	{
@@ -45,10 +47,11 @@ void Polygone::ResizeScale(double scale)
 		m_vectorPoint[i].y = vectY * scale + m_origin.y;
 	}
 
+	return this;
 }
 
 
-void Polygone::Display() const
+Polygone* Polygone::Display()
 {
 	Shape::Display();
 
@@ -56,4 +59,6 @@ void Polygone::Display() const
 	{
 		std::cout<<"point "<<i<< " x : "<<m_vectorPoint[i].x<<" y : "<<m_vectorPoint[i].y<<std::endl;
 	}
+
+	return this;
 }

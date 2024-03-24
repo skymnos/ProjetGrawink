@@ -18,10 +18,9 @@ int main()
     poly1 = new Polygone({1000,1000}, {{800,600}, {700, 500}, {1300,450}});
     std::cout<<"ID count : " << GrawEditor::GetEditor().GetCountId() <<std::endl;
 
-
+    rectangle->Rotate(30);
     GrawEditor::m_GrawEditor.Add(rectangle);
     GrawEditor::m_GrawEditor.Add(stroke);
-    GrawEditor::m_GrawEditor.Undo();
     GrawEditor::m_GrawEditor.Add(polygone);
     GrawEditor::m_GrawEditor.Undo();
     GrawEditor::m_GrawEditor.Add(poly1);

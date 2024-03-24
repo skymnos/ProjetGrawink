@@ -26,7 +26,7 @@ bool operator==(Shape const& a, Shape const& b)
     return  a.GetId()== b.GetId();
 }
 
-void Shape::Display() const
+Shape* Shape::Display()
 {
     cout<<"point x : "<<m_origin.x<<endl;
     cout<<"point y : "<<m_origin.x<<endl;
@@ -34,23 +34,31 @@ void Shape::Display() const
     cout<<"stroke color : "<<m_stroke_color<<endl;
     cout<<"stroke width : "<<m_stroke_width<<endl;
     cout<<"fill color : "<<m_fill_color<<endl;
+
+    return this;
 }
 
-void Shape::Rotate(double angle) 
+Shape* Shape::Rotate(double angle) 
 {
     m_angle = angle;
+
+    return this;
 }
 
-void Shape::Translate(int x , int y)
+Shape* Shape::Translate(int x , int y)
 {
     m_origin.x = x;
     m_origin.y = y;
+
+    return this;
 }
 
-void Shape::Color(std::string stroke_color, std::string fill_color = "none")
+Shape* Shape::Color(std::string stroke_color, std::string fill_color = "none")
 {
     m_stroke_color = stroke_color;
     m_fill_color = fill_color;
+
+    return this;
 }
 
 std::string Shape::ConvertSVG() const

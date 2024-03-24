@@ -18,17 +18,17 @@ class Shape
         int GetId() const;
 
         // rotation de l'objet
-        void Rotate(double angle); 
+        Shape* Rotate(double angle); 
 
         // deplacement de l'objet
-        void Translate(int x, int y);
+        Shape* Translate(int x, int y);
 
         // change la couleur de l'objet
-        void Color(std::string stroke_color, std::string fill_color);
+        Shape* Color(std::string stroke_color, std::string fill_color);
 
         // redimention de l'objet
 
-        virtual void Display() const;
+        virtual Shape* Display();
 
         int GetAngle() const;
 
