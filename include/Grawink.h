@@ -5,8 +5,11 @@
 #include <cstdint>
 #include <iostream>
 #include "Shape.h"
-#include "Rectangle.h"
-#include "../externalLibrary/liste_chainee.h"
+#include "liste_chainee.h"
+
+class Shape;
+class ListeShape;
+class ListeAction;
 
 class GrawEditor {
 
@@ -25,17 +28,17 @@ class GrawEditor {
       All       = ~0ULL       // = 111...111 = 0xff...ff = (2^64)-1
     };
 
-     GrawEditor();
-    ListeShape* getlShapes();
-    ListeAction* getlUndo();
-    ListeAction* getlRedo();
+    GrawEditor();
+    ListeShape getlShapes();
+    ListeAction getlUndo();
+    ListeAction getlRedo();
     int GetCountId();
    
     static GrawEditor& GetEditor();
 
     // Ajoute un nouveau objet au canevas
     //template <typename Shape>  (ne sait pas si necessaire)
-    GrawEditor& Add(Shape newShape);
+    GrawEditor& Add(Shape& newShape);
 
     // Supprime un objet du canevas
     GrawEditor& Delete(int shapeId);
@@ -65,7 +68,7 @@ class GrawEditor {
     GrawEditor& Print();
 
     // Écrit le code SVG résultant des objets contenus dans le canevas
-    GrawEditor& ExportSVG(std::string fileName);
+    GrawEditor& ExportSVG();
 
     // Crée une nouvelle instance de la classe `Shape` (i.e. Rectangle,
     // Triangle, Stroke, Circle, etc.) et retourne un pointeur vers l'objet nouvellement alloué.
@@ -76,11 +79,13 @@ class GrawEditor {
       return new Shape();
     }
 
+    static GrawEditor m_GrawEditor;
+
 
   private:
-    ListeShape *m_lShapes;
-    ListeAction *m_lUndo;
-    ListeAction *m_lRedo;
+    //ListeShape& m_lShapes;
+    //ListeAction& m_lUndo;
+    //ListeAction& m_lRedo;
     int countId;
     int canvasHeight;
     int canvasWidth;

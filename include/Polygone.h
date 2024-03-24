@@ -4,8 +4,13 @@
 
 class Polygone : public Shape
 {
+    public:
+        Polygone(point origin, point m_tabPoint[], int angle, std::string stroke_color, int stroke_width, std::string fill_color); //je ne sais pas comment initialiser le tabPoint dans le .h et .cpp
+
+        std::string ConvertSVG() const;
+
     private:
-        point tabPoint[50];
+        point m_tabPoint[50];
 
 
 };

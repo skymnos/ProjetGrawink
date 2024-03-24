@@ -4,8 +4,13 @@
 
 class Ellipsis : public Shape
 {
+    public:
+        Ellipsis(point m_origin = {0,0}, double r1 = 10, double r2 = 10, int m_angle = 0, std::string m_stroke_color = "black", int m_stroke_width = 4, std::string m_fill_color = "black");
+
+        std::string ConvertSVG() const;
+
     private:
-        double r1,r2;
+        double m_r1,m_r2;
 };
 
 #endif

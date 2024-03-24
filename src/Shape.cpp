@@ -1,9 +1,9 @@
 #include "../include/Shape.h"
-#include "../include/Grawink.h"
+//#include "../include/Grawink.h"
 
 using namespace std;
 
-Shape::Shape(point origin, int width, int height, int angle, std::string stroke_color, std::string fill_color, int stroke_width) : m_origin(origin),m_width(width),m_height(height),m_angle(angle),m_stroke_color(stroke_color),m_fill_color(fill_color),m_stroke_width(stroke_width)
+Shape::Shape(point origin, int angle, std::string stroke_color, int stroke_width, std::string fill_color) : m_origin(origin),m_angle(angle),m_stroke_color(stroke_color),m_stroke_width(stroke_width),m_fill_color(fill_color)
 {
     m_id = GrawEditor::GetEditor().GetCountId();
 }
@@ -14,15 +14,6 @@ int Shape::GetId() const
 int Shape::GetAngle() const
 {
     return m_angle;
-}
-int Shape::GetWidth() const
-{
-    return m_width;
-}
-
-int Shape::GetHeight() const
-{
-    return m_height;
 }
 
 point Shape::GetOrigin() const
@@ -51,15 +42,19 @@ void Shape::Translate(int x , int y)
     m_origin.y = y;
 }
 
-void Shape::Resize(int width,int height)
+void Shape::Resize()
 {
-    m_width = width;
-    m_height = height;
 }
 
 void Shape::Color(std::string stroke_color, std::string fill_color = "none")
 {
     m_stroke_color = stroke_color;
     m_fill_color = fill_color;
+}
+
+std::string Shape::ConvertSVG() const
+{
+    std::cout << "isconverted in shape" << std::endl;
+    return "";
 }
 
