@@ -9,6 +9,10 @@ class Polygone : public Shape
 
         std::string ConvertSVG() const;
 
+        void Resize();
+
+        void Display() const;
+
     private:
         point m_tabPoint[50];
 

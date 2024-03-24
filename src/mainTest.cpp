@@ -2,6 +2,8 @@
 #include "../include/Shape.h"
 #include "../include/Rectangle.h"
 #include "../include/Stroke.h"
+#include "../include/Ellipsis.h"
+
 
 int main()
 {
@@ -10,13 +12,18 @@ int main()
     Shape myShape2({10,45});
     Rectangle rectangle({20,20}, 50, 20, 0, "black", 1, "red");
     Stroke stroke({0,0},{200,200},0, "blue", 5);
+    Ellipsis ellipsis({100,100},20,30,0,"blue",1,"black");
     GrawEditor::m_GrawEditor.Resize(200, 200);
     std::cout<<"length : " << myList.GetLength() <<std::endl;
     std::cout<<"ID count : " << GrawEditor::GetEditor().GetCountId() <<std::endl;
     std::cout << "lShapes : " << GrawEditor::m_GrawEditor.getlShapes().GetLength() << std::endl;
     GrawEditor::m_GrawEditor.Add(rectangle);
     GrawEditor::m_GrawEditor.Add(stroke);
+    GrawEditor::m_GrawEditor.Add(ellipsis);
     GrawEditor::m_GrawEditor.Delete(0);
+    std::cout<<"____________________________________"<<std::endl;
+    stroke.Resize({20,20},{100,50});
+    std::cout<<"____________________________________"<<std::endl;
     std::cout << "lShapes : " << GrawEditor::m_GrawEditor.getlShapes().GetLength() << std::endl;
     //GrawEditor::m_GrawEditor.Resize(400, 400);
     GrawEditor::m_GrawEditor.ExportSVG();

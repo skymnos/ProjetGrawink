@@ -16,3 +16,13 @@ std::string Polygone::ConvertSVG() const
 
 	return "<polygon points=\""+ points +"\" stroke = \""+ m_stroke_color +"\" fill = \""+ m_fill_color +"\" stroke-width = \""+ std::to_string(m_stroke_width) +"\"/>\n";
 }
+
+void Polygone::Resize()
+{
+
+}
+
+void Polygone::Display() const
+{
+	Shape::Display();
+}
