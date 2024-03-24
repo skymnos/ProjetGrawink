@@ -1,4 +1,4 @@
-#include "../include/liste_chainee.h"
+/*#include "../include/liste_chainee.h"
 
 // Constructeur par défaut
 ListeShape::ListeShape() : head(nullptr), length(0) {}
@@ -126,8 +126,10 @@ int ListeShape::GetLength()
 ElementShape* ListeShape::GetHead()
 {
     return head;
-}
+}*/
 
+
+/*
 //   ......................... LISTEACTION ..................
 
 // Constructeur par défaut
@@ -207,4 +209,4 @@ void ListeAction::inserer( Shape *shape, int index) {
     }
     newElement->next = current->next;
     current->next = newElement;
-}
+}*/

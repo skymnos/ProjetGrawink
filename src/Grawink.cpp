@@ -4,9 +4,9 @@
 #include <string>
 
 
-ListeShape m_lShapes;
-ListeAction m_lUndo;
-ListeAction m_lRedo;
+List<Shape> m_lShapes;
+List<Shape> m_lUndo;
+List<Shape> m_lRedo;
 
 GrawEditor GrawEditor::m_GrawEditor = GrawEditor();
 
@@ -23,15 +23,15 @@ GrawEditor& GrawEditor::GetEditor()
     return m_GrawEditor;
 }
 
-ListeShape GrawEditor::getlShapes()
+List<Shape> GrawEditor::getlShapes()
 {
     return m_lShapes;
 }
-ListeAction GrawEditor::getlUndo()
+List<Shape> GrawEditor::getlUndo()
 {
     return m_lUndo;
 }
-ListeAction GrawEditor::getlRedo()
+List<Shape> GrawEditor::getlRedo()
 {
     return m_lRedo;
 }
@@ -104,7 +104,7 @@ GrawEditor& GrawEditor::ExportSVG()
     MyFile << header;
 
 
-    ElementShape* current = m_lShapes.GetHead(); // cause une erreure de segmentation
+    Element<Shape>* current = m_lShapes.GetHead(); // cause une erreure de segmentation
 
     if (current == nullptr)
     {
@@ -112,12 +112,12 @@ GrawEditor& GrawEditor::ExportSVG()
     }
     else
     {
-        MyFile << current->shape->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
+        MyFile << current->data->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
 
         while (current->next != nullptr)
         {
             current = current->next;
-            MyFile << current->shape->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
+            MyFile << current->data->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
         }
         
     }
