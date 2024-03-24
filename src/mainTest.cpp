@@ -4,10 +4,11 @@
 #include "../include/Stroke.h"
 #include "../include/Ellipsis.h"
 #include "../include/Polygone.h"
+#include "../include/Text.h"
 
 int main()
 {
-    Shape *rectangle, *poly1;
+    Shape *rectangle, *poly1, *text1;
     Stroke *stroke;
     Polygone *polygone;
     //Polygone *poly1;
@@ -17,9 +18,11 @@ int main()
     stroke = new Stroke({0,0},{100,300},0, "green", 3);
     polygone = new Polygone({0,0}, {{30, 30}, {0, 30}, {30,0}});
     poly1 = new Polygone({1000,1000}, {{800,600}, {700, 500}, {1300,450}});
+    text1 = new Text({200, 200}, "je suis Matteo");
     std::cout<<"ID count : " << GrawEditor::GetEditor().GetCountId() <<std::endl;
 
     rectangle->Rotate(30);
+    GrawEditor::m_GrawEditor.Add(text1);
     GrawEditor::m_GrawEditor.Add(rectangle);
     GrawEditor::m_GrawEditor.Add(stroke);
     GrawEditor::m_GrawEditor.Add(polygone);

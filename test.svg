@@ -2,4 +2,5 @@
 <polygon points="1000,1000 800, 600 700, 500 1300, 450 " stroke = "black" fill = "black" stroke-width = "2" transform = "rotate(0.000000) translate(0,0) scale(0.500000) "/>
 <line x1="0" x2="100" y1="0" y2="300" stroke="green" stroke-width="3" transform = "rotate(0.000000) translate(0,0) scale(1.000000) "/>
 <rect x="20" y="20" width="50" height="20" stroke="black" fill="red" stroke-width="1" transform = "rotate(30.000000) translate(0,0) scale(2.000000) "/>
+<text x="200" y="200" font-family="Verdana" font-size="20" stroke="black" fill="black" stroke-width="3" transform = "rotate(0.000000) translate(0,0) scale(1.000000) ">je suis Matteo</text>
 </svg>
