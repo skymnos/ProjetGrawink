@@ -5,8 +5,8 @@
 
 
 List<Shape> m_lShapes;
-List<List<Shape>> m_lUndo;
-List<List<Shape>> m_lRedo;
+List<Shape> m_lUndo;
+List<Shape> m_lRedo;
 
 GrawEditor GrawEditor::m_GrawEditor = GrawEditor();
 
@@ -27,11 +27,11 @@ List<Shape> GrawEditor::getlShapes()
 {
     return m_lShapes;
 }
-List<List<Shape>> GrawEditor::getlUndo()
+List<Shape> GrawEditor::getlUndo()
 {
     return m_lUndo;
 }
-List<List<Shape>> GrawEditor::getlRedo()
+List<Shape> GrawEditor::getlRedo()
 {
     return m_lRedo;
 }
@@ -41,8 +41,10 @@ int GrawEditor::GetCountId()
 }
 
 
-GrawEditor& GrawEditor::Delete(int shapeId)
+GrawEditor& GrawEditor::Delete(Shape *newShape)
 {
+    m_lRedo.AppendFirst(newShape);
+    m_lShapes.Delete(newShape);
     return m_GrawEditor;
 }
 
@@ -86,6 +88,7 @@ GrawEditor& GrawEditor::Resize(int width, int height)
 
 GrawEditor& GrawEditor::Add(Shape *newShape)
 {
+    m_lUndo.AppendFirst(newShape);
     m_lShapes.AppendFirst(newShape);
     countId++;
 
@@ -129,38 +132,32 @@ GrawEditor& GrawEditor::ExportSVG()
     return m_GrawEditor;
 }
 
-void GrawEditor::SaveState() const
-{
-    m_lUndo.AppendFirst(&m_lShapes);
-}
-
 GrawEditor& GrawEditor::Undo()
 {
     if (m_lUndo.GetHead() != nullptr)
     {
-        m_lShapes = *m_lUndo.GetHead()->data;
-        m_lRedo.AppendFirst(m_lUndo.GetHead()->data);
+        m_GrawEditor.Delete(m_lUndo.GetHead()->data);
         m_lUndo.DeleteFirst();
-        return m_GrawEditor;
     }
     else
     {
         std::cout << "no undo possible" << std::endl;
     }
+    
+    return m_GrawEditor;
 }
 
 GrawEditor& GrawEditor::Redo()
 {
     if (m_lRedo.GetHead() != nullptr)
     {
-        m_lShapes = *m_lRedo.GetHead()->data;
-        m_lUndo.AppendFirst(m_lRedo.GetHead()->data);
+        m_GrawEditor.Add(m_lRedo.GetHead()->data);
         m_lRedo.DeleteFirst();
-        return m_GrawEditor;
     }
     else
     {
         std::cout << "no redo possible" << std::endl;
     }
+    return m_GrawEditor;
 }
 

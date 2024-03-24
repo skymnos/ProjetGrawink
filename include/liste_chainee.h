@@ -114,19 +114,19 @@ public:
         length ++;
     };
 
-    void Delete(int id)
+    void Delete(T *t)
     {
         Element<T>* current = head;
         Element<T>* previous = nullptr;
 
-        if (current->data->GetId() == id)
+        if (current->data == t)
         {
             head = current->next;
             delete current;
         }
         else
         {
-            while (current->data->GetId() != id)
+            while (current->data != t)
             {
                 previous = current;
                 current = current->next;

@@ -21,8 +21,10 @@ int main()
 
     GrawEditor::m_GrawEditor.Add(rectangle);
     GrawEditor::m_GrawEditor.Add(stroke);
+    GrawEditor::m_GrawEditor.Undo();
     GrawEditor::m_GrawEditor.Add(polygone);
-    GrawEditor ::m_GrawEditor.Add(poly1);
+    GrawEditor::m_GrawEditor.Undo();
+    GrawEditor::m_GrawEditor.Add(poly1);
 
     std::cout<<"_______________________________"<<std::endl;
     //poly1->Resize({{120,140},{130,160},{10, 250}});

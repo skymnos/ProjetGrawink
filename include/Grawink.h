@@ -31,8 +31,8 @@ class GrawEditor {
 
     GrawEditor();
     List<Shape> getlShapes();
-    List<List<Shape>> getlUndo();
-    List<List<Shape>> getlRedo();
+    List<Shape> getlUndo();
+    List<Shape> getlRedo();
     int GetCountId();
    
     static GrawEditor& GetEditor();
@@ -42,7 +42,7 @@ class GrawEditor {
     GrawEditor& Add(Shape *newShape);
 
     // Supprime un objet du canevas
-    GrawEditor& Delete(int shapeId);
+    GrawEditor& Delete(Shape *newShape);
 
     // Annule le dernier ajout d'objet
     GrawEditor& Undo();
@@ -70,9 +70,6 @@ class GrawEditor {
 
     // Écrit le code SVG résultant des objets contenus dans le canevas
     GrawEditor& ExportSVG();
-
-    //permet de sauvgarder le fichier svg sous forme de string pour l'utiliser dans le undo et redo
-    void SaveState() const;
 
     // Crée une nouvelle instance de la classe `Shape` (i.e. Rectangle,
     // Triangle, Stroke, Circle, etc.) et retourne un pointeur vers l'objet nouvellement alloué.
