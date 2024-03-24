@@ -30,9 +30,9 @@ class GrawEditor {
     };
 
     GrawEditor();
-    std::vector<Shape*> getlShapes();
-    std::vector<Shape*> getlUndo();
-    std::vector<Shape*> getlRedo();
+    ListeShape getlShapes();
+    ListeAction getlUndo();
+    ListeAction getlRedo();
     int GetCountId();
    
     static GrawEditor& GetEditor();
@@ -84,12 +84,12 @@ class GrawEditor {
 
 
   private:
-    //ListeShape* m_lShapes;
-    //ListeAction* m_lUndo;
-    //ListeAction* m_lRedo;
-    std::vector<Shape*> m_lShapes;
-    std::vector<Shape*> m_lUndo;
-    std::vector<Shape*> m_lRedo;
+    //ListeShape m_lShapes;
+    //ListeAction m_lUndo;
+    //ListeAction m_lRedo;
+    //std::vector<Shape*> m_lShapes;
+    //std::vector<Shape*> m_lUndo;
+    //std::vector<Shape*> m_lRedo;
 
     int countId;
     int canvasHeight;

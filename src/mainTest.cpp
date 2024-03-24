@@ -9,7 +9,7 @@ int main()
 {
     Shape *rectangle, *stroke;
     rectangle = new Rectangle({20,20}, 50, 20, 0, "black", 1, "red");
-    stroke = new Stroke({0,0},{200,200},0, "blue", 5);
+    stroke = new Stroke({0,0},{100,200},0, "blue", 5);
     std::cout<<"CHECK" <<std::endl;
     ListeShape myList;
     Shape shape;

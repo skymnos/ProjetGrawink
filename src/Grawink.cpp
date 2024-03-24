@@ -4,9 +4,9 @@
 #include <string>
 
 
-//ListeShape m_lShapes;
-//ListeAction m_lUndo;
-//ListeAction m_lRedo;
+ListeShape m_lShapes;
+ListeAction m_lUndo;
+ListeAction m_lRedo;
 
 GrawEditor GrawEditor::m_GrawEditor = GrawEditor();
 
@@ -23,15 +23,15 @@ GrawEditor& GrawEditor::GetEditor()
     return m_GrawEditor;
 }
 
-std::vector<Shape*> GrawEditor::getlShapes()
+ListeShape GrawEditor::getlShapes()
 {
     return m_lShapes;
 }
-std::vector<Shape*> GrawEditor::getlUndo()
+ListeAction GrawEditor::getlUndo()
 {
     return m_lUndo;
 }
-std::vector<Shape*> GrawEditor::getlRedo()
+ListeAction GrawEditor::getlRedo()
 {
     return m_lRedo;
 }
@@ -86,7 +86,7 @@ GrawEditor& GrawEditor::Resize(int width, int height)
 
 GrawEditor& GrawEditor::Add(Shape *newShape)
 {
-    m_lShapes.push_back(newShape);
+    m_lShapes.AppendFirst(newShape);
     countId++;
 
     return m_GrawEditor;
@@ -104,14 +104,14 @@ GrawEditor& GrawEditor::ExportSVG()
     MyFile << header;
 
 
-    /*ElementShape* current = m_lShapes->GetHead(); // cause une erreure de segmentation
+    ElementShape* current = m_lShapes.GetHead(); // cause une erreure de segmentation
 
     /*for (int i = 1; i < 20; i++) 
     {
         std::cout << "enter for loop : " << i << std::endl;
         std::cout << current->shape.ConvertSVG() << std::endl; //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
         std::cout << "loop finished: " << i  << std::endl;
-    }
+    }*/
 
     if (current == nullptr)
     {
@@ -120,7 +120,7 @@ GrawEditor& GrawEditor::ExportSVG()
     else
     {
         std::cout<<"Check" <<std::endl;
-        MyFile << current->shape.ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
+        MyFile << current->shape->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
         std::cout << "convert" << std::endl;
         /*for (int i = 1; i < m_lShapes.GetLength(); i++) 
         {
@@ -129,24 +129,24 @@ GrawEditor& GrawEditor::ExportSVG()
             std::cout << "get current next" << std::endl;
             MyFile << current->shape.ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
             std::cout << "loop finished" << std::endl;
-        }
+        }*/
 
         while (current->next != nullptr)
         {
             std::cout << "enter for loop" << std::endl;
             current = current->next;
             std::cout << "get current next" << std::endl;
-            MyFile << current->shape.ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
+            MyFile << current->shape->ConvertSVG(); //appelle la fonction de chaque forme qui ressort le format svg (� cr�er pour chaque shape)
             std::cout << "loop finished" << std::endl;
         }
         
-    }*/
+    }
 
-    for (int i = 0; i < m_lShapes.size(); i++)
+    /*for (int i = 0; i < m_lShapes.size(); i++)
     {
         std::cout << m_lShapes[i]->ConvertSVG() << std::endl;
         MyFile << m_lShapes[i]->ConvertSVG();
-    }
+    }*/
 
     MyFile << "</svg>";
     // Close the file
