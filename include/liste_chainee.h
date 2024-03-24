@@ -5,11 +5,11 @@
 class Shape;
 
 struct ElementShape {
-    Shape& shape ;
+    Shape* shape ;
     ElementShape* next; 
 }; 
 struct ElementAction {
-    Shape& shape;  //................. a modifier plus tard .......................
+    Shape* shape;  //................. a modifier plus tard .......................
     ElementAction* next; 
 }; 
 
