@@ -5,11 +5,12 @@
 #include "../include/Ellipsis.h"
 #include "../include/Polygone.h"
 #include "../include/Text.h"
+#include"../include/RegularPolygone.h"
 
 int main()
 {
     GrawEditor canvas = GrawEditor::GetEditor();
-    Shape *rectangle, *poly1, *text1, *rectangle2, *ellipsis, *poly2;
+    Shape *rectangle, *poly1, *text1, *rectangle2, *ellipsis, *poly2, *hexagon, *octogon;
     Stroke *stroke;
     Polygone *polygone;
     //Polygone *poly1;
@@ -23,11 +24,15 @@ int main()
     poly2 = new Polygone({300,500}, {{1500,300}, {50, 600}, {1100,1100}, {250, 250}});
     text1 = new Text({200, 200}, "je suis Matteo");
     ellipsis = canvas.GetNew<Ellipsis>();
+    hexagon = new RegularPolygone({200, 200}, 6, 50);
+    octogon = new RegularPolygone({1000, 200}, 8, 70);
     std::cout<<"ID count : " << canvas.GetCountId() <<std::endl;
 
     rectangle->Rotate(30);
     rectangle2->Scale(3);
     rectangle2->Color("blue", "green", 0.3);
+    canvas.Add(hexagon);
+    canvas.Add(octogon);
     canvas.Add(poly2);
     canvas.Add(rectangle2);
     canvas.Add(rectangle);

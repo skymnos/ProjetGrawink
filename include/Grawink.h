@@ -86,7 +86,6 @@ class GrawEditor {
 
 
   private:
-
     int countId;
     int canvasHeight;
     int canvasWidth;
