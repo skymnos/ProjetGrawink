@@ -32,6 +32,7 @@ class GrawEditor {
 
     GrawEditor();
     List<Shape> getlShapes();
+    List<Shape> getlSelectedShapes();
     List<Shape> getlUndo();
     List<Shape> getlRedo();
     int GetCountId();
@@ -63,7 +64,7 @@ class GrawEditor {
     //  ShapeType::Triangle | ShapeType::Rectangle | ShapeType::Octogon, ou
     //  bien l'équivalent en hexadécimal (0x46ULL), ou en décimal (70ULL).
     // Passer ShapeType::All resélectionne l'ensemble des formes du canevas.
-    GrawEditor& Select(ShapeType type, int shapeId);
+    GrawEditor& Select(ShapeType type);
 
     // Affiche l'ensemble des objets contenus dans le canevas, triés par
     // catégorie, dans la sortie standard.

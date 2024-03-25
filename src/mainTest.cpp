@@ -51,8 +51,10 @@ int main()
     poly1->Scale(0.5);
     rectangle->Scale(2);
     std::cout<<"_______________________________"<<std::endl;
+
+    canvas.Select(GrawEditor::ShapeType::All);
     canvas.ExportSVG();
-    
+
     std::cout<<"*********************************"<<std::endl;
     canvas.Print();
     std::cout<<"*********************************"<<std::endl;

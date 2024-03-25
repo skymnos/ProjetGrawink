@@ -6,6 +6,7 @@
 
 
 List<Shape> m_lShapes;
+List<Shape> m_lSelectedShapes;
 List<Shape> m_lUndo;
 List<Shape> m_lRedo;
 
@@ -27,6 +28,10 @@ GrawEditor& GrawEditor::GetEditor()
 List<Shape> GrawEditor::getlShapes()
 {
     return m_lShapes;
+}
+List<Shape> GrawEditor::getlSelectedShapes()
+{
+    return m_lSelectedShapes;
 }
 List<Shape> GrawEditor::getlUndo()
 {
@@ -126,7 +131,7 @@ GrawEditor& GrawEditor::ExportSVG()
     MyFile << header;
 
 
-    Element<Shape>* current = m_lShapes.GetHead(); // cause une erreure de segmentation
+    Element<Shape>* current = m_lSelectedShapes.GetHead(); // cause une erreure de segmentation
 
     if (current == nullptr)
     {
@@ -182,10 +187,31 @@ GrawEditor& GrawEditor::Redo()
 
 GrawEditor& GrawEditor::Print()
 {
-    Element<Shape>* current = m_lShapes.GetHead();
-    for (int i = 0; i < m_lShapes.GetLength(); i++)
+    Element<Shape>* current = m_lSelectedShapes.GetHead();
+    for (int i = 0; i < m_lSelectedShapes.GetLength(); i++)
     {
         std::cout << current->data->ConvertSVG() << std::endl;
+        current = current->next;
+    }
+
+    return m_GrawEditor;
+}
+
+GrawEditor& GrawEditor::Select(ShapeType type)
+{
+    Element<Shape>* current = m_lShapes.GetHead();
+
+    if (current == nullptr)
+    {
+        std::cout << "nothing to select" << std::endl;
+    }
+
+    while (current != nullptr)
+    {
+        if (static_cast<uint64_t>(current->data->GetShapeType()) & static_cast<uint64_t>(type))
+        {
+            m_lSelectedShapes.AppendFirst(current->data);
+        }
         current = current->next;
     }
 
