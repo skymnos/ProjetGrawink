@@ -51,8 +51,11 @@ int main()
     poly1->Scale(0.5);
     rectangle->Scale(2);
     std::cout<<"_______________________________"<<std::endl;
-    std::cout<<polygone->ConvertSVG()<<std::endl;
     canvas.ExportSVG();
+    
+    std::cout<<"*********************************"<<std::endl;
+    canvas.Print();
+    std::cout<<"*********************************"<<std::endl;
     
     std::cout<<"ID count : " << canvas.GetCountId() <<std::endl;
     std::cout<<"CHECK" <<std::endl;

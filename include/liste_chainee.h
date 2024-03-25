@@ -92,6 +92,7 @@ public:
         if (index == 0) {
             newElement->next = head;
             head = newElement;
+            length ++;
             return;
         }
 

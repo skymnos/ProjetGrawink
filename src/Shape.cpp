@@ -34,6 +34,7 @@ Shape* Shape::Display()
     cout<<"stroke color : "<<m_stroke_color<<endl;
     cout<<"stroke width : "<<m_stroke_width<<endl;
     cout<<"fill color : "<<m_fill_color<<endl;
+    cout<<"_______________________________"<<std::endl;
 
     return this;
 }

@@ -22,12 +22,12 @@ std::string Polygone::ConvertSVG() const
 
 Polygone* Polygone::Display()
 {
-	Shape::Display();
 
 	for (int i = 0; i < m_vectorPoint.size(); i++)
 	{
 		std::cout<<"point "<<i<< " x : "<<m_vectorPoint[i].x<<" y : "<<m_vectorPoint[i].y<<std::endl;
 	}
+	Shape::Display();
 
 	return this;
 }

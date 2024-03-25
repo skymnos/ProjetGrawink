@@ -180,3 +180,15 @@ GrawEditor& GrawEditor::Redo()
     return m_GrawEditor;
 }
 
+GrawEditor& GrawEditor::Print()
+{
+    Element<Shape>* current = m_lShapes.GetHead();
+    for (int i = 0; i < m_lShapes.GetLength(); i++)
+    {
+        std::cout << current->data->ConvertSVG() << std::endl;
+        current = current->next;
+    }
+
+    return m_GrawEditor;
+}
+
