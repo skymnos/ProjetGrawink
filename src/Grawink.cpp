@@ -9,6 +9,7 @@ List<Shape> m_lShapes;
 List<Shape> m_lSelectedShapes;
 List<Shape> m_lUndo;
 List<Shape> m_lRedo;
+point canvasOrigin;
 
 GrawEditor GrawEditor::m_GrawEditor = GrawEditor();
 
@@ -18,6 +19,7 @@ GrawEditor::GrawEditor()
     countId = 0;
     canvasHeight = 100;
     canvasWidth = 100;
+    canvasOrigin = {0,0};
 }
 
 GrawEditor& GrawEditor::GetEditor()
@@ -49,45 +51,46 @@ int GrawEditor::GetCountId()
 
 GrawEditor& GrawEditor::Delete(Shape *newShape)
 {
+    std::cout << "check delete" << std::endl;
     m_lRedo.AppendFirst(newShape);
     m_lShapes.Delete(newShape);
     return m_GrawEditor;
 }
 
-GrawEditor& GrawEditor::Resize(int width, int height)
+GrawEditor& GrawEditor::Resize(point origin, int width, int height)
 {
-    int scaleX,scaleY;
-    scaleX = width/canvasWidth;
-    scaleY = height/canvasHeight;
     canvasHeight = height;
     canvasWidth = width;
-    /*ElementShape *current = m_lShapes->GetHead();
+    canvasOrigin = origin;
 
-    if (current == nullptr)
-    {
-        std::cout<<"No shape to resize" <<std::endl;
-    }
-    else
-    {
-        int shapeHeight;
-        int shapeWidth;
-        point shapeOrigin;
+    return m_GrawEditor;
+}
 
-        for (int i =0; i < m_lShapes->GetLength(); i++)
+GrawEditor& GrawEditor::Crop(point origin, int width, int height)
+{
+    canvasHeight = height;
+    canvasWidth = width;
+    canvasOrigin = origin;
+
+    Element<Shape>* current = m_lShapes.GetHead();
+
+    while (current != nullptr)
+    { 
+        Shape* toDelete = nullptr;
+        point shapeOrigin = current->data->GetOrigin();
+        if (shapeOrigin.x > canvasWidth || shapeOrigin.x < -canvasOrigin.x || shapeOrigin.y > canvasHeight || shapeOrigin.y < -canvasOrigin.y)
         {
-            // reflechir à comment faire selon le shapeType
-            shapeHeight = current->shape.GetHeight();
-            shapeWidth = current->shape.GetWidth();
-            shapeOrigin = current->shape.GetOrigin();
-
-            current->shape.Resize(shapeHeight * scaleY, shapeWidth * scaleX);
-            current->shape.Translate(shapeOrigin.x * scaleX, shapeOrigin.y * scaleY);
-            
-
-            current = current->next;
+            std::cout << "out of canvas : "<< current->data->ConvertSVG() << std::endl;
+            toDelete = current->data;
+        }
+        current = current->next;
+        if (toDelete != nullptr)
+        {
+            Delete(toDelete);
         }
     }
-*/
+    
+
     return m_GrawEditor;
 }
 
@@ -121,11 +124,10 @@ GrawEditor& GrawEditor::Add(Shape *newShape)
 
 GrawEditor& GrawEditor::ExportSVG()
 {
-    std::cout<<"Check" <<std::endl;
 
     std::ofstream MyFile("test.svg");
 
-    std::string header = "<svg width = \"" + std::to_string(canvasHeight) + "\" height = \"" + std::to_string(canvasWidth) + "\" version = \"1.1\" xmlns = \"http://www.w3.org/2000/svg\">\n";
+    std::string header = "<svg width = \"" + std::to_string(canvasHeight) + "\" height = \"" + std::to_string(canvasWidth) + "\" version = \"1.1\" xmlns = \"http://www.w3.org/2000/svg\">\n<svg x=\""+ std::to_string(canvasOrigin.x) +"\" y=\""+ std::to_string(canvasOrigin.y) +"\" overflow = \"visible\">";
     
     // Write to the file
     MyFile << header;
@@ -149,7 +151,7 @@ GrawEditor& GrawEditor::ExportSVG()
         
     }
 
-    MyFile << "</svg>";
+    MyFile << "</svg>\n</svg>";
     // Close the file
     MyFile.close();
 

@@ -10,6 +10,7 @@
 class Shape;
 class ListeShape;
 class ListeAction;
+struct point;
 
 class GrawEditor {
 
@@ -53,10 +54,10 @@ class GrawEditor {
     GrawEditor& Redo();
 
     // Redimensionne le canevas
-    GrawEditor& Resize( int width , int height);
+    GrawEditor& Resize(point origin, int width , int height);
 
     // Redimensionne le canevas en supprimant les objets extérieurs */
-    GrawEditor& Crop(double center,double width, double height);
+    GrawEditor& Crop(point origin, int width, int height);
 
     // Sélectionne les objets à exporter/afficher.
     // La sélection pourra se faire sous la forme d'une disjonction ("OU" binaires) de `enum ShapeType`.

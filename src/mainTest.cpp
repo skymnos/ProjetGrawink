@@ -15,7 +15,8 @@ int main()
     Polygone *polygone;
     //Polygone *poly1;
     //Rectangle *rectangle;
-    canvas.Resize(2000, 2000);
+    canvas.Resize({0,0}, 2000, 2000);
+    //canvas.Resize({0,0}, 2000, 2000);
     rectangle2 = canvas.GetNew<Rectangle>();
     rectangle = new Rectangle({20,20}, 50, 20, 0, "black", 1, "red", 0.5);
     stroke = new Stroke({0,0},{100,300},0, "green", 3);
@@ -42,6 +43,9 @@ int main()
     canvas.Add(poly1);
     canvas.Add(text1);
     canvas.Add(ellipsis);
+
+    canvas.Crop({-200, -200}, 1000, 1000);
+    canvas.Resize({300,300}, 2000, 2000);
 
     if (rectangle2->GetShapeType() == GrawEditor::ShapeType::Rectangle)
     {
