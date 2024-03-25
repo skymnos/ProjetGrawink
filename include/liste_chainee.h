@@ -1,9 +1,5 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
-#include "Shape.h"
-
-class Shape;
-
 template <typename T>
 struct Element {
     T* data ;

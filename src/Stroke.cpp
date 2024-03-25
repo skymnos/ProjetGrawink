@@ -2,7 +2,8 @@
 
 Stroke::Stroke(point origin, point endP, int angle, std::string stroke_color, int stroke_width) : Shape(origin, angle, stroke_color, stroke_width), m_endP(endP)
 {
-
+	m_type = GrawEditor::ShapeType::Stroke;
+	m_sideNb = 1;
 }
 
 std::string Stroke::ConvertSVG() const

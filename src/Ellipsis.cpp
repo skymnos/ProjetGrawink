@@ -2,7 +2,8 @@
 
 Ellipsis::Ellipsis(point origin, double r1, double r2, int angle, std::string stroke_color, int stroke_width, std::string fill_color, double fill_opacity) : Shape(origin, angle, stroke_color, stroke_width, fill_color, fill_opacity), m_r1(r1), m_r2(r2)
 {
-
+	m_type = GrawEditor::ShapeType::Ellipsis;
+	m_sideNb = INT_MAX;
 }
 
 std::string Ellipsis::ConvertSVG() const

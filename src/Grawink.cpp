@@ -1,7 +1,8 @@
 #include <iostream>
-#include "../include/Grawink.h"
 #include <fstream>
 #include <string>
+#include "../include/Grawink.h"
+#include "../include/Shape.h"
 
 
 List<Shape> m_lShapes;
@@ -89,7 +90,25 @@ GrawEditor& GrawEditor::Resize(int width, int height)
 GrawEditor& GrawEditor::Add(Shape *newShape)
 {
     m_lUndo.AppendFirst(newShape);
-    m_lShapes.AppendFirst(newShape);
+    Element<Shape>* current = m_lShapes.GetHead();
+    
+    if (current == nullptr)
+    {
+        m_lShapes.AppendFirst(newShape);
+        return m_GrawEditor;
+    }
+    
+    int index = 0;
+    while (newShape->GetSideNb() > current->data->GetSideNb() && current->next != nullptr)
+    {
+        index ++;
+        current = current->next;
+    }
+    if (newShape->GetSideNb() > current->data->GetSideNb())
+    {
+        index ++;
+    }
+    m_lShapes.Append(newShape, index);
     countId++;
 
     return m_GrawEditor;

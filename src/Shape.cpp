@@ -1,5 +1,4 @@
 #include "../include/Shape.h"
-//#include "../include/Grawink.h"
 
 using namespace std;
 
@@ -73,5 +72,15 @@ std::string Shape::ConvertSVG() const
 {
     std::cout << "isconverted in shape" << std::endl;
     return "";
+}
+
+GrawEditor::ShapeType Shape::GetShapeType()
+{
+    return m_type;
+}
+
+int Shape::GetSideNb()
+{
+    return m_sideNb;
 }
 

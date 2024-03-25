@@ -37,6 +37,9 @@ class Shape
         point GetOrigin() const;
 
         virtual std::string ConvertSVG() const;
+
+        GrawEditor::ShapeType GetShapeType();
+        int GetSideNb();
         
     protected:
         bool m_selected = false;
@@ -45,12 +48,13 @@ class Shape
         std::string m_stroke_color;
         std::string m_fill_color;
         //int m_width, m_height;
-        //GrawEditor::ShapeType m_type;
+        GrawEditor::ShapeType m_type;
         double m_angle;
         double m_scale;
         point m_translate;
         int m_stroke_width;
         double m_fill_opacity;
+        int m_sideNb;
 
 };
 

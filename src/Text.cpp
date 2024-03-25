@@ -2,7 +2,8 @@
 
 Text::Text(point origin, std::string text, std::string font_family, int font_size, int angle, std::string stroke_color, int stroke_width, std::string fill_color, double fill_opacity) : Shape(origin, angle, stroke_color, stroke_width, fill_color, fill_opacity), m_text(text), m_font_family(font_family), m_font_size(font_size)
 {
-
+    m_type = GrawEditor::ShapeType::Text;
+    m_sideNb = 0;
 }
 
 std::string Text::ConvertSVG() const

@@ -4,7 +4,6 @@
 
 #include <cstdint>
 #include <iostream>
-#include "Shape.h"
 #include "liste_chainee.h"
 #include <vector>
 
@@ -17,17 +16,19 @@ class GrawEditor {
   
   public:
 
-    enum class ShapeType: uint64_t {
-      Stroke    = 1ULL << 0,  // = 0000 0001 = 0x01 =   1
-      Triangle  = 1ULL << 1,  // = 0000 0010 = 0x02 =   2
-      Rectangle = 1ULL << 2,  // = 0000 0100 = 0x04 =   4
-      Pentagon  = 1ULL << 3,  // = 0000 1000 = 0x08 =   8
-      Hexagon   = 1ULL << 4,  // = 0001 0000 = 0x10 =  16
-      Heptagon  = 1ULL << 5,  // = 0010 0000 = 0x20 =  32
-      Octogon   = 1ULL << 6,  // = 0100 0000 = 0x40 =  64
-      Ellipsis  = 1ULL << 7,  // = 1000 0000 = 0x80 = 128
-      All       = ~0ULL       // = 111...111 = 0xff...ff = (2^64)-1
-    };
+      enum class ShapeType: uint64_t {
+        Stroke    = 1ULL << 0,  // = 0000 0001 = 0x01 =   1
+        Triangle  = 1ULL << 1,  // = 0000 0010 = 0x02 =   2
+        Rectangle = 1ULL << 2,  // = 0000 0100 = 0x04 =   4
+        Pentagon  = 1ULL << 3,  // = 0000 1000 = 0x08 =   8
+        Hexagon   = 1ULL << 4,  // = 0001 0000 = 0x10 =  16
+        Heptagon  = 1ULL << 5,  // = 0010 0000 = 0x20 =  32
+        Octogon   = 1ULL << 6,  // = 0100 0000 = 0x40 =  64
+        Ellipsis  = 1ULL << 7,  // = 1000 0000 = 0x80 = 128
+        Polygon = 1ULL << 8,
+        Text = 1ULL << 9,
+        All       = ~0ULL       // = 111...111 = 0xff...ff = (2^64)-1
+      };
 
     GrawEditor();
     List<Shape> getlShapes();
