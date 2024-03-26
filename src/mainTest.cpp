@@ -1,11 +1,5 @@
 #include <iostream>
-#include "../include/Shape.h"
-#include "../include/Rectangle.h"
-#include "../include/Stroke.h"
-#include "../include/Ellipsis.h"
-#include "../include/Polygone.h"
-#include "../include/Text.h"
-#include"../include/RegularPolygone.h"
+#include "../include/Grawink.h"
 
 int main()
 {
@@ -44,10 +38,10 @@ int main()
     canvas.Add(text1);
     canvas.Add(ellipsis);
 
-    canvas.Crop({-200, -200}, 1000, 1000);
-    canvas.Resize({300,300}, 2000, 2000);
+    //canvas.Crop({-200, -200}, 1000, 1000);
+    //canvas.Resize({300,300}, 2000, 2000);
 
-    if (rectangle2->GetShapeType() == GrawEditor::ShapeType::Rectangle)
+    if (rectangle2->GetShapeType() == static_cast<uint64_t>(GrawEditor::ShapeType::Rectangle))
     {
         std::cout<< "c'est un rectangle" <<std::endl;
     }
@@ -61,7 +55,7 @@ int main()
     rectangle->Scale(2);
     std::cout<<"_______________________________"<<std::endl;
 
-    canvas.Select(GrawEditor::ShapeType::All);
+    canvas.Select(GrawEditor::ShapeType::Hexagon);
     canvas.ExportSVG();
 
     std::cout<<"*********************************"<<std::endl;

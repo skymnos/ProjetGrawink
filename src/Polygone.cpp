@@ -3,7 +3,7 @@
 
 Polygone::Polygone(point origin, std::vector<point> vectorPoint, int angle, std::string stroke_color, int stroke_width, std::string fill_color, double fill_opacity) : Shape(origin, angle, stroke_color, stroke_width, fill_color, fill_opacity), m_vectorPoint(vectorPoint)
 {
-	m_type = GrawEditor::ShapeType::Polygon;
+	m_type = 1ULL << 8;
 	m_sideNb = m_vectorPoint.size() + 1;
 }
 

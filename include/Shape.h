@@ -2,7 +2,7 @@
 #define _SHAPE_H
 #include <iostream>
 #include <string>
-#include "Grawink.h"
+#include <cstdint>
 
 
 typedef struct point {
@@ -38,7 +38,7 @@ class Shape
 
         virtual std::string ConvertSVG() const;
 
-        GrawEditor::ShapeType GetShapeType();
+        uint64_t GetShapeType();
         int GetSideNb();
         
     protected:
@@ -48,7 +48,7 @@ class Shape
         std::string m_stroke_color;
         std::string m_fill_color;
         //int m_width, m_height;
-        GrawEditor::ShapeType m_type;
+        uint64_t m_type;
         double m_angle;
         double m_scale;
         point m_translate;

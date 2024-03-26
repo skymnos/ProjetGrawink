@@ -2,7 +2,7 @@
 
 Rectangle::Rectangle(point origin, int width, int height, int angle, std::string stroke_color, int stroke_width, std::string fill_color, double fill_opacity) : Shape(origin, angle, stroke_color, stroke_width, fill_color, fill_opacity), m_width(width), m_height(height)
 {
-	m_type = GrawEditor::ShapeType::Rectangle;
+	m_type = 1ULL << 2;
 	m_sideNb = 4;
 }
 

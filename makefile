@@ -6,24 +6,19 @@ INCLUDE_DIR = include                  # Répertoire des fichiers d'en-tête (.h
 BUILD_DIR = build                      # Répertoire de construction (fichiers objets)
 TARGET = mon_programme                         # Nom de l'exécutable à générer
 
-# Recherche de tous les fichiers source (.cpp) dans SRC_DIR et ses sous-répertoires
-SRCS := $(shell find $(SRC_DIR) -name '*.cpp')
 
-# Conversion des fichiers source en fichiers objets dans BUILD_DIR
-OBJS := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
 
-# Règle pour construire l'exécutable
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+test:
+	g++ -c src/Ellipsis.cpp -o objects/Ellipsis.o
+	g++ -c src/Grawink.cpp -o objects/Grawink.o
+	g++ -c src/mainTest.cpp -o objects/mainTest.o
+	g++ -c src/Polygone.cpp -o objects/Polygone.o
+	g++ -c src/Rectangle.cpp -o objects/Rectangle.o
+	g++ -c src/RegularPolygone.cpp -o objects/RegularPolygone.o
+	g++ -c src/Shape.cpp -o objects/Shape.o
+	g++ -c src/Stroke.cpp -o objects/Stroke.o
+	g++ -c src/Text.cpp -o objects/Text.o
 
-# Règle pour construire les fichiers objets
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
-	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+	ar rcs libgraweditor.a objects/Ellipsis.o objects/Grawink.o objects/Polygone.o objects/Rectangle.o objects/RegularPolygone.o objects/Shape.o objects/Stroke.o objects/Text.o
 
-# Création du répertoire de construction s'il n'existe pas
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
-
-# Règle pour nettoyer les fichiers générés
-clean:
-	rm -f $(OBJS) $(TARGET)
+	g++ -o mybin.exe objects/mainTest.o -L. libgraweditor.a

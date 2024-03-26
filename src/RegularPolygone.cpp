@@ -5,21 +5,24 @@ RegularPolygone::RegularPolygone(point origin, int sideNb, int radius, int angle
     m_sideNb = sideNb;
     switch (m_sideNb)
     {
+        case 3:
+            m_type = 1ULL << 1;
+            break;
         case 5:
-            m_type = GrawEditor::ShapeType::Pentagon;
+            m_type = 1ULL << 3;
             break;
         case 6:
-            m_type = GrawEditor::ShapeType::Hexagon;
+            m_type = 1ULL << 4;
             break;
         case 7:
-            m_type = GrawEditor::ShapeType::Heptagon;
+            m_type = 1ULL << 5;
             break;
         case 8:
-            m_type = GrawEditor::ShapeType::Octogon;
+            m_type = 1ULL << 6;
             break;
         
         default:
-            m_type = GrawEditor::ShapeType::Polygon;
+            m_type = 1ULL << 8;
             break;
     }
 

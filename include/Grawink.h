@@ -7,6 +7,14 @@
 #include "liste_chainee.h"
 #include <vector>
 
+#include "../include/Shape.h"
+#include "../include/Rectangle.h"
+#include "../include/Stroke.h"
+#include "../include/Ellipsis.h"
+#include "../include/Polygone.h"
+#include "../include/Text.h"
+#include"../include/RegularPolygone.h"
+
 class Shape;
 class ListeShape;
 class ListeAction;

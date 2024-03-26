@@ -75,7 +75,7 @@ std::string Shape::ConvertSVG() const
     return "";
 }
 
-GrawEditor::ShapeType Shape::GetShapeType()
+uint64_t Shape::GetShapeType()
 {
     return m_type;
 }
