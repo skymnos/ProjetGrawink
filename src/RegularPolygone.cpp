@@ -47,6 +47,40 @@ RegularPolygone* RegularPolygone::Modify(point origin, int sideNb, int radius, i
 	m_fill_color = fill_color;
 	m_fill_opacity = fill_opacity;
 
+    switch (m_sideNb)
+    {
+        case 3:
+            m_type = 1ULL << 1;
+            break;
+        case 5:
+            m_type = 1ULL << 3;
+            break;
+        case 6:
+            m_type = 1ULL << 4;
+            break;
+        case 7:
+            m_type = 1ULL << 5;
+            break;
+        case 8:
+            m_type = 1ULL << 6;
+            break;
+        
+        default:
+            m_type = 1ULL << 8;
+            break;
+    }
+
+    m_vectorPoint.clear();
+
+    for (int i = 0; i < m_sideNb; i++)
+    {
+        double constructionAngle = 2 * 3.14159265358979323846 * i /m_sideNb;
+        point point;
+        point.x = m_origin.x + radius * std::cos(constructionAngle);
+        point.y = m_origin.y + radius * std::sin(constructionAngle);
+        m_vectorPoint.push_back(point);
+    }
+
     return this;
 }
 

@@ -3,8 +3,30 @@
 
 Polygone::Polygone(point origin, std::vector<point> vectorPoint, int angle, std::string stroke_color, int stroke_width, std::string fill_color, double fill_opacity) : Shape(origin, angle, stroke_color, stroke_width, fill_color, fill_opacity), m_vectorPoint(vectorPoint)
 {
-	m_type = 1ULL << 8;
 	m_sideNb = m_vectorPoint.size() + 1;
+
+	switch (m_sideNb)
+    {
+        case 3:
+            m_type = 1ULL << 1;
+            break;
+        case 5:
+            m_type = 1ULL << 3;
+            break;
+        case 6:
+            m_type = 1ULL << 4;
+            break;
+        case 7:
+            m_type = 1ULL << 5;
+            break;
+        case 8:
+            m_type = 1ULL << 6;
+            break;
+        
+        default:
+            m_type = 1ULL << 8;
+            break;
+    }
 }
 
 Polygone* Polygone::Modify(point origin, std::vector<point> vectorPoint, int angle, std::string stroke_color, int stroke_width, std::string fill_color, double fill_opacity)
@@ -16,6 +38,29 @@ Polygone* Polygone::Modify(point origin, std::vector<point> vectorPoint, int ang
 	m_stroke_width = stroke_width;
 	m_fill_color = fill_color;
 	m_fill_opacity = fill_opacity;
+	
+	switch (m_sideNb)
+    {
+        case 3:
+            m_type = 1ULL << 1;
+            break;
+        case 5:
+            m_type = 1ULL << 3;
+            break;
+        case 6:
+            m_type = 1ULL << 4;
+            break;
+        case 7:
+            m_type = 1ULL << 5;
+            break;
+        case 8:
+            m_type = 1ULL << 6;
+            break;
+        
+        default:
+            m_type = 1ULL << 8;
+            break;
+    }
 
 	return this;
 }

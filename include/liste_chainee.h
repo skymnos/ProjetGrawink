@@ -133,6 +133,25 @@ public:
         length--;
     };
 
+    void Clear()
+    {
+        while (head != nullptr)
+        {
+            DeleteFirst();
+        }
+
+
+        /*Element<T>* current = head;
+        while (current != nullptr) {
+            Element<T>* next = current->next;
+            current->data = nullptr;
+            current = nullptr;
+            delete current;
+            length --;
+            current = next;
+        }*/
+    }
+
     int GetLength()
     {
         return length;
