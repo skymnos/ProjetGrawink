@@ -5,7 +5,11 @@
 class Text : public Shape
 {
     public:
-        Text(point origin = {0,0}, std::string text = "text", std::string font_family ="Verdana", int font_size = 20 , int angle = 0, std::string stroke_color = "black", int stroke_width = 3, std::string fill_color = "black", double m_fill_opacity = 1);
+        Text(point origin = {0,0}, std::string text = "text", std::string font_family ="Verdana", int font_size = 20 , int angle = 0, std::string stroke_color = "black", int stroke_width = 3, std::string fill_color = "black", double fill_opacity = 1);
+
+        Text* Modify(point origin = {0,0}, std::string text = "text", std::string font_family ="Verdana", int font_size = 20 , int angle = 0, std::string stroke_color = "black", int stroke_width = 3, std::string fill_color = "black", double fill_opacity = 1);
+
+        Text* ChangeText(std::string text = "text", std::string font_family ="Verdana", int font_size = 20);
 
         virtual std::string ConvertSVG() const;
 

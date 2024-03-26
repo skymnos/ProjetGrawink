@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\externalLibrary",
     "\\include",
     "\\src"
   ],
-  "SelectedNode": "\\externalLibrary\\mainTest.cpp",
   "PreviewInSolutionExplorer": false
 }

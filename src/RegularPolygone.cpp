@@ -36,6 +36,20 @@ RegularPolygone::RegularPolygone(point origin, int sideNb, int radius, int angle
     }
 }
 
+RegularPolygone* RegularPolygone::Modify(point origin, int sideNb, int radius, int angle, std::string stroke_color , int stroke_width, std::string fill_color, double fill_opacity)
+{
+    m_origin = origin;
+    m_sideNb = sideNb;
+    m_radius = radius;
+	m_angle = angle;
+	m_stroke_color = stroke_color;
+	m_stroke_width = stroke_width;
+	m_fill_color = fill_color;
+	m_fill_opacity = fill_opacity;
+
+    return this;
+}
+
 std::string RegularPolygone::ConvertSVG() const
 {
 	std::string points ="";

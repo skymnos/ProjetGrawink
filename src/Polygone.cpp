@@ -7,6 +7,19 @@ Polygone::Polygone(point origin, std::vector<point> vectorPoint, int angle, std:
 	m_sideNb = m_vectorPoint.size() + 1;
 }
 
+Polygone* Polygone::Modify(point origin, std::vector<point> vectorPoint, int angle, std::string stroke_color, int stroke_width, std::string fill_color, double fill_opacity)
+{
+	m_origin = origin;
+	m_vectorPoint = vectorPoint;
+	m_angle = angle;
+	m_stroke_color = stroke_color;
+	m_stroke_width = stroke_width;
+	m_fill_color = fill_color;
+	m_fill_opacity = fill_opacity;
+
+	return this;
+}
+
 
 std::string Polygone::ConvertSVG() const
 {

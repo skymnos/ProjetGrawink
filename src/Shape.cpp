@@ -7,10 +7,7 @@ Shape::Shape(point origin, int angle, std::string stroke_color, int stroke_width
     m_translate = {0,0};
     m_scale = 1;
 }
-int Shape::GetId() const
-{
-    return m_id;
-}
+
 int Shape::GetAngle() const
 {
     return m_angle;
@@ -19,11 +16,6 @@ int Shape::GetAngle() const
 point Shape::GetOrigin() const
 {
     return m_origin;
-}
-
-bool operator==(Shape const& a, Shape const& b)
-{
-    return  a.GetId()== b.GetId();
 }
 
 Shape* Shape::Display()
@@ -63,6 +55,18 @@ Shape* Shape::Scale(double scale)
 Shape* Shape::Color(std::string stroke_color, std::string fill_color = "none", double fill_opacity = 1)
 {
     m_stroke_color = stroke_color;
+    m_fill_color = fill_color;
+    m_fill_opacity = fill_opacity;
+
+    return this;
+}
+
+Shape* Shape::Modify(point origin, int angle, std::string stroke_color, int stroke_width, std::string fill_color, double fill_opacity)
+{
+    m_origin = origin;
+    m_angle = angle;
+    m_stroke_color = stroke_color;
+    m_stroke_width = stroke_width;
     m_fill_color = fill_color;
     m_fill_opacity = fill_opacity;
 

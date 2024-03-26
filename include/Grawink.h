@@ -6,7 +6,6 @@
 #include <iostream>
 #include "liste_chainee.h"
 #include <vector>
-
 #include "../include/Shape.h"
 #include "../include/Rectangle.h"
 #include "../include/Stroke.h"
@@ -15,7 +14,6 @@
 #include "../include/Text.h"
 #include"../include/RegularPolygone.h"
 
-class Shape;
 class ListeShape;
 class ListeAction;
 struct point;
@@ -44,7 +42,6 @@ class GrawEditor {
     List<Shape> getlSelectedShapes();
     List<Shape> getlUndo();
     List<Shape> getlRedo();
-    int GetCountId();
    
     static GrawEditor& GetEditor();
 
@@ -95,9 +92,9 @@ class GrawEditor {
 
 
   private:
-    int countId;
     int canvasHeight;
     int canvasWidth;
+    point canvasOrigin;
 };
 
 #endif /* _GRAWINK_H_ */

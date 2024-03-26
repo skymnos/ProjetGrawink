@@ -148,23 +148,4 @@ public:
 
 };
 
-/*class ListeAction {
-private:
-    ElementAction* head;
-
-public:
-
-    ListeAction();
-    ~ListeAction();
-
-    void append( Shape *shape);
-
-    void Display() const;
-
-    ElementAction* rechercher( Shape *shape) const;
-
-    void inserer( Shape *shape, int index);
-
-};*/
-
 #endif

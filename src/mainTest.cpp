@@ -1,10 +1,10 @@
-#include <iostream>
 #include "../include/Grawink.h"
 
 int main()
 {
     GrawEditor canvas = GrawEditor::GetEditor();
-    Shape *rectangle, *poly1, *text1, *rectangle2, *ellipsis, *poly2, *hexagon, *octogon;
+    Shape *rectangle, *poly1, *rectangle2, *ellipsis, *poly2, *hexagon, *octogon;
+    Text* text1;
     Stroke *stroke;
     Polygone *polygone;
     //Polygone *poly1;
@@ -17,11 +17,10 @@ int main()
     polygone = new Polygone({0,0}, {{30, 30}, {0, 30}, {30,0}});
     poly1 = new Polygone({1000,1000}, {{800,600}, {700, 500}, {1300,450}});
     poly2 = new Polygone({300,500}, {{1500,300}, {50, 600}, {1100,1100}, {250, 250}});
-    text1 = new Text({200, 200}, "je suis Matteo");
+    text1 = canvas.GetNew<Text>();
     ellipsis = canvas.GetNew<Ellipsis>();
     hexagon = new RegularPolygone({200, 200}, 6, 50);
     octogon = new RegularPolygone({1000, 200}, 8, 70);
-    std::cout<<"ID count : " << canvas.GetCountId() <<std::endl;
 
     rectangle->Rotate(30);
     rectangle2->Scale(3);
@@ -37,6 +36,8 @@ int main()
     canvas.Add(poly1);
     canvas.Add(text1);
     canvas.Add(ellipsis);
+
+    text1->Modify({200, 1000}, "TEXT MODIFIED");
 
     //canvas.Crop({-200, -200}, 1000, 1000);
     //canvas.Resize({300,300}, 2000, 2000);
@@ -55,14 +56,12 @@ int main()
     rectangle->Scale(2);
     std::cout<<"_______________________________"<<std::endl;
 
-    canvas.Select(GrawEditor::ShapeType::Hexagon);
+    canvas.Select(GrawEditor::ShapeType::All);
     canvas.ExportSVG();
 
     std::cout<<"*********************************"<<std::endl;
     canvas.Print();
     std::cout<<"*********************************"<<std::endl;
-    
-    std::cout<<"ID count : " << canvas.GetCountId() <<std::endl;
     std::cout<<"CHECK" <<std::endl;
     return 0;
 }

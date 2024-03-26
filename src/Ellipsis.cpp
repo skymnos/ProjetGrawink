@@ -6,6 +6,20 @@ Ellipsis::Ellipsis(point origin, double r1, double r2, int angle, std::string st
 	m_sideNb = INT_MAX;
 }
 
+Ellipsis* Ellipsis::Modify(point origin, double r1, double r2, int angle, std::string stroke_color, int stroke_width, std::string fill_color, double fill_opacity)
+{
+	m_origin = origin;
+	m_r1 = r1;
+	m_r2 = r2;
+	m_angle = angle;
+	m_stroke_color = stroke_color;
+	m_stroke_width = stroke_width;
+	m_fill_color = fill_color;
+	m_fill_opacity = fill_opacity;
+
+	return this;
+}
+
 std::string Ellipsis::ConvertSVG() const
 {
 	return "<ellipse cx=\""+ std::to_string(m_origin.x) + "\" cy=\""+ std::to_string(m_origin.y) +"\" rx=\""+ std::to_string(m_r1) +"\" ry=\""+ std::to_string(m_r2) +"\" stroke=\""+ m_stroke_color +"\" fill=\""+ m_fill_color +"\" stroke-width=\""+ std::to_string(m_stroke_width) +"\" fill-opacity =\""+ std::to_string(m_fill_opacity) +"\" transform = \"rotate("+ std::to_string(m_angle) +") translate("+ std::to_string(m_translate.x) + ","+  std::to_string(m_translate.y) + ") scale("+ std::to_string(m_scale) +") \"/>\n";

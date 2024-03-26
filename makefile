@@ -10,14 +10,14 @@ TARGET = mon_programme                         # Nom de l'exécutable à génér
 
 test:
 	g++ -c src/Ellipsis.cpp -o objects/Ellipsis.o
-	g++ -c src/Grawink.cpp -o objects/Grawink.o
-	g++ -c src/mainTest.cpp -o objects/mainTest.o
 	g++ -c src/Polygone.cpp -o objects/Polygone.o
 	g++ -c src/Rectangle.cpp -o objects/Rectangle.o
 	g++ -c src/RegularPolygone.cpp -o objects/RegularPolygone.o
 	g++ -c src/Shape.cpp -o objects/Shape.o
 	g++ -c src/Stroke.cpp -o objects/Stroke.o
 	g++ -c src/Text.cpp -o objects/Text.o
+	g++ -c src/Grawink.cpp -o objects/Grawink.o
+	g++ -c src/mainTest.cpp -o objects/mainTest.o
 
 	ar rcs libgraweditor.a objects/Ellipsis.o objects/Grawink.o objects/Polygone.o objects/Rectangle.o objects/RegularPolygone.o objects/Shape.o objects/Stroke.o objects/Text.o
 

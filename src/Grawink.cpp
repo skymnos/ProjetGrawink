@@ -9,14 +9,12 @@ List<Shape> m_lShapes;
 List<Shape> m_lSelectedShapes;
 List<Shape> m_lUndo;
 List<Shape> m_lRedo;
-point canvasOrigin;
 
 GrawEditor GrawEditor::m_GrawEditor = GrawEditor();
 
 // constructeur par default
 GrawEditor::GrawEditor()
 {
-    countId = 0;
     canvasHeight = 100;
     canvasWidth = 100;
     canvasOrigin = {0,0};
@@ -43,15 +41,10 @@ List<Shape> GrawEditor::getlRedo()
 {
     return m_lRedo;
 }
-int GrawEditor::GetCountId()
-{
-    return countId;
-}
 
 
 GrawEditor& GrawEditor::Delete(Shape *newShape)
 {
-    std::cout << "check delete" << std::endl;
     m_lRedo.AppendFirst(newShape);
     m_lShapes.Delete(newShape);
     return m_GrawEditor;
@@ -117,7 +110,6 @@ GrawEditor& GrawEditor::Add(Shape *newShape)
         index ++;
     }
     m_lShapes.Append(newShape, index);
-    countId++;
 
     return m_GrawEditor;
 }
@@ -127,7 +119,7 @@ GrawEditor& GrawEditor::ExportSVG()
 
     std::ofstream MyFile("test.svg");
 
-    std::string header = "<svg width = \"" + std::to_string(canvasHeight) + "\" height = \"" + std::to_string(canvasWidth) + "\" version = \"1.1\" xmlns = \"http://www.w3.org/2000/svg\">\n<svg x=\""+ std::to_string(canvasOrigin.x) +"\" y=\""+ std::to_string(canvasOrigin.y) +"\" overflow = \"visible\">";
+    std::string header = "<svg width = \"" + std::to_string(canvasHeight) + "\" height = \"" + std::to_string(canvasWidth) + "\" version = \"1.1\" xmlns = \"http://www.w3.org/2000/svg\">\n<svg x=\""+ std::to_string(canvasOrigin.x) +"\" y=\""+ std::to_string(canvasOrigin.y) +"\" overflow = \"visible\">\n";
     
     // Write to the file
     MyFile << header;
