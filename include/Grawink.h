@@ -53,10 +53,10 @@ class GrawEditor {
     GrawEditor& Delete(Shape *newShape);
 
     // Annule le dernier ajout d'objet
-    GrawEditor& Undo();
+    GrawEditor& Undo(int step = 1);
 
     // Réinsère le dernier objet supprimé
-    GrawEditor& Redo();
+    GrawEditor& Redo(int step = 1);
 
     // Redimensionne le canevas
     GrawEditor& Resize(point origin, int width , int height);

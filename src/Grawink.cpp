@@ -150,32 +150,39 @@ GrawEditor& GrawEditor::ExportSVG()
     return m_GrawEditor;
 }
 
-GrawEditor& GrawEditor::Undo()
+GrawEditor& GrawEditor::Undo(int step)
 {
-    if (m_lUndo.GetHead() != nullptr)
+    for (int i = 0; i < step; i++)
     {
-        m_GrawEditor.Delete(m_lUndo.GetHead()->data);
-        m_lUndo.DeleteFirst();
-    }
-    else
-    {
-        std::cout << "no undo possible" << std::endl;
+        if (m_lUndo.GetHead() != nullptr)
+        {
+            m_GrawEditor.Delete(m_lUndo.GetHead()->data);
+            m_lUndo.DeleteFirst();
+        }
+        else
+        {
+            std::cout << "no undo possible" << std::endl;
+        }   
     }
     
     return m_GrawEditor;
 }
 
-GrawEditor& GrawEditor::Redo()
+GrawEditor& GrawEditor::Redo(int step)
 {
-    if (m_lRedo.GetHead() != nullptr)
+    for (int i = 0; i < step; i++)
     {
-        m_GrawEditor.Add(m_lRedo.GetHead()->data);
-        m_lRedo.DeleteFirst();
+        if (m_lRedo.GetHead() != nullptr)
+        {
+            m_GrawEditor.Add(m_lRedo.GetHead()->data);
+            m_lRedo.DeleteFirst();
+        }
+        else
+        {
+            std::cout << "no redo possible" << std::endl;
+        }
     }
-    else
-    {
-        std::cout << "no redo possible" << std::endl;
-    }
+
     return m_GrawEditor;
 }
 

@@ -32,7 +32,7 @@ int main()
     canvas.Add(rectangle);
     canvas.Add(stroke);
     canvas.Add(polygone);
-    canvas.Undo();
+    canvas.Undo(2);
     canvas.Add(poly1);
     canvas.Add(text1);
     canvas.Add(ellipsis);
