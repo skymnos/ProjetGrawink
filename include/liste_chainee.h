@@ -1,14 +1,11 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 template <typename T>
+
 struct Element {
     T* data ;
     Element* next; 
 }; 
-/*struct ElementAction {
-    Shape* shape;  //................. a modifier plus tard .......................
-    ElementAction* next; 
-}; */
 
 
 template <typename T>
