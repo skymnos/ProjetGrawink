@@ -81,5 +81,8 @@ int main()
     canvas.Print();
     canvas.ExportSVG("export3");
 
+
+    canvas.ClearCanvas();
+
     return 0;
 }

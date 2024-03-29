@@ -146,8 +146,8 @@ GrawEditor& GrawEditor::Undo(int step)
     {
         if (m_lUndo.GetHead() != nullptr)
         {
+            Shape *toDelete = m_lUndo.GetHead()->data;
             m_GrawEditor.Delete(m_lUndo.GetHead()->data);
-            m_lUndo.DeleteFirst();
         }
         else
         {
@@ -230,6 +230,54 @@ GrawEditor& GrawEditor::Select(ShapeType type, Shape *shape)
         }
         current = current->next;
     }
+
+    return m_GrawEditor;
+}
+
+GrawEditor& GrawEditor::ClearCanvas()
+{
+    std::cout << m_lShapes.GetLength() << std::endl;
+    std::cout << m_lUndo.GetLength() << std::endl;
+    std::cout << m_lRedo.GetLength() << std::endl;
+
+    Element<Shape> *current = m_lShapes.GetHead();
+
+    while (current != nullptr)
+    {
+        std::cout << current->data->ConvertSVG() << std::endl;
+        current = current->next;
+    }
+    std::cout << "********************************************************" << std::endl;
+
+    current = m_lUndo.GetHead();
+
+    while (current != nullptr)
+    {
+        if (current->data != nullptr)
+        {
+            std::cout << current->data->ConvertSVG() << std::endl;
+            delete current->data;
+        }
+        current = current->next;
+    }
+
+    current = m_lRedo.GetHead();
+
+    while (current != nullptr)
+    {
+
+        if (current->data != nullptr)
+        {
+            std::cout << current->data->ConvertSVG() << std::endl;
+            delete current->data ;
+        }
+        current = current->next;
+    }
+
+    m_lShapes.Clear();
+    m_lSelectedShapes.Clear();
+    m_lUndo.Clear();
+    m_lRedo.Clear();  
 
     return m_GrawEditor;
 }

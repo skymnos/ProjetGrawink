@@ -15,6 +15,7 @@ class Shape
     public :
 
         Shape(point origin = {0,0}, int angle = 0, std::string stroke_color = "black", int stroke_width = 4, std::string fill_color = "black", double fill_opacity = 1);
+        virtual ~Shape() = default;
 
         // rotation de l'objet
         Shape* Rotate(double angle); 
