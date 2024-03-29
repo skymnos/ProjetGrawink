@@ -5,9 +5,9 @@ test:
 	g++ -Wall -ggdb3 -c src/Polygone.cpp -o objects/Polygone.o
 	g++ -Wall -ggdb3 -c src/Rectangle.cpp -o objects/Rectangle.o
 	g++ -Wall -ggdb3 -c src/RegularPolygone.cpp -o objects/RegularPolygone.o
-	g++ -Wall -ggdb3 -c src/Shape.cpp -o objects/Shape.o
 	g++ -Wall -ggdb3 -c src/Stroke.cpp -o objects/Stroke.o
 	g++ -Wall -ggdb3 -c src/Text.cpp -o objects/Text.o
+	g++ -Wall -ggdb3 -c src/Shape.cpp -o objects/Shape.o
 	g++ -Wall -ggdb3 -c src/Grawink.cpp -o objects/Grawink.o
 	g++ -Wall -ggdb3 -c src/mainTest.cpp -o objects/mainTest.o
 

@@ -69,7 +69,7 @@ Polygone* Polygone::Modify(point origin, std::vector<point> vectorPoint, int ang
 std::string Polygone::ConvertSVG() const
 {
 	std::string points = std::to_string(m_origin.x) + "," +std::to_string(m_origin.y) + " ";
-	for (int i = 0; i < m_vectorPoint.size(); i++)
+	for (uint i = 0; i < m_vectorPoint.size(); i++)
 	{
 		points += std::to_string(m_vectorPoint[i].x) + ", " + std::to_string(m_vectorPoint[i].y) + " ";
 	}
@@ -81,7 +81,7 @@ std::string Polygone::ConvertSVG() const
 Polygone* Polygone::Display()
 {
 
-	for (int i = 0; i < m_vectorPoint.size(); i++)
+	for (uint i = 0; i < m_vectorPoint.size(); i++)
 	{
 		std::cout<<"point "<<i<< " x : "<<m_vectorPoint[i].x<<" y : "<<m_vectorPoint[i].y<<std::endl;
 	}

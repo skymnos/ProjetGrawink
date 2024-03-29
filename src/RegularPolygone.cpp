@@ -87,7 +87,7 @@ RegularPolygone* RegularPolygone::Modify(point origin, int sideNb, int radius, i
 std::string RegularPolygone::ConvertSVG() const
 {
 	std::string points ="";
-	for (int i = 0; i < m_vectorPoint.size(); i++)
+	for (uint i = 0; i < m_vectorPoint.size(); i++)
 	{
 		points += std::to_string(m_vectorPoint[i].x) + ", " + std::to_string(m_vectorPoint[i].y) + " ";
 	}
@@ -99,7 +99,7 @@ std::string RegularPolygone::ConvertSVG() const
 RegularPolygone* RegularPolygone::Display()
 {
 
-	for (int i = 0; i < m_vectorPoint.size(); i++)
+	for (uint i = 0; i < m_vectorPoint.size(); i++)
 	{
 		std::cout<<"point "<<i<< " x : "<<m_vectorPoint[i].x<<" y : "<<m_vectorPoint[i].y<<std::endl;
 	}

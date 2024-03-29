@@ -45,15 +45,14 @@ class Shape
         
     protected:
         point m_origin;
-        std::string m_stroke_color;
-        std::string m_fill_color;
-        //int m_width, m_height;
-        uint64_t m_type;
         double m_angle;
+        std::string m_stroke_color;
+        int m_stroke_width;
+        std::string m_fill_color;
+        double m_fill_opacity;
+        uint64_t m_type;
         double m_scale;
         point m_translate;
-        int m_stroke_width;
-        double m_fill_opacity;
         int m_sideNb;
 
 };
